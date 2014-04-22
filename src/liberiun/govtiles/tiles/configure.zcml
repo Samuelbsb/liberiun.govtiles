@@ -1,0 +1,87 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="liberiun.govtiles">
+
+  <include package="plone.tiles" file="meta.zcml" />
+
+  <plone:tile
+      name="accordion"
+      title="Lista em Accordion"
+      description="Um tile que mostra uma lista de itens com accordion."
+      add_permission="cmf.ModifyPortalContent"
+      schema=".accordion.IAccordionTile"
+      class=".accordion.AccordionTile"
+      template="templates/accordion.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
+
+  <plone:tile
+      name="iframe"
+      title="Iframe"
+      description="Um tile de iframe"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".iframe.IIframeTile"
+      class=".iframe.IframeTile"
+      template="templates/iframe.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
+      
+  <plone:tile
+      name="listfoldercontents"
+      title="Lista o conteúdo de uma pasta"
+      description="Tile que lista o conteúdo de uma pasta especificada"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".listFolderContents.IListFolderContentsTile"
+      class=".listFolderContents.ListFolderContentsTile"
+      template="templates/listitems.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
+      
+  <plone:tile
+      name="rssfeed"
+      title="RSS Feed"
+      description=""
+      add_permission="cmf.ModifyPortalContent"
+      schema=".rssfeed.IRSSFeedTile"
+      class=".rssfeed.RSSFeedTile"
+      template="templates/listitems.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
+      
+  <plone:tile
+      name="sharing"
+      title="Compartilhamento"
+      description="Tile com itens para compartilhamento"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".sharing.ISharingTile"
+      class=".sharing.SharingTile"
+      template="templates/sharing.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
+
+  <plone:tile
+      name="bannerexterno"
+      title="Banner Externo"
+      description="Tile que redireciona para uma página externa"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".bannerexterno.IBannerExternoTile"
+      class=".bannerexterno.BannerExternoTile"
+      template="templates/bannerexterno.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
+
+</configure>

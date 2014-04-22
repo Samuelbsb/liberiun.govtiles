@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="brasil.gov.tiles">
+
+<body>
+    <div class="accordion" tal:define="dados view/get_dados">
+        <tal:repeat repeat="folder dados/list">
+            <h3 tal:content="folder/title">Title</h3>
+            <ul class="accordion_list">
+                <li tal:repeat="page folder/pages">
+                    <a tal:condition="not:page/exclude_from_nav" 
+                       tal:attributes="href page/url">
+	                    <span tal:condition="page/icone_url"
+                              class="accordion_icone">
+	                        <img tal:attributes="src page/icone_url"></img>
+	                    </span>
+	                    <span class="accordion_title">
+	                        <span tal:content="page/title" >page title</span>
+	                    </span>
+	                    <span class="visualClear"></span>
+                    </a>
+                </li>                
+            </ul>
+        </tal:repeat>
+    </div>
+</body>
+</html>

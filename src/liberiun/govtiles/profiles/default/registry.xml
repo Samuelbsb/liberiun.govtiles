@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<registry>
+  <record name="plone.app.tiles">
+    <value purge="false">
+      <element>accordion</element>
+      <element>iframe</element>
+      <element>listfoldercontents</element>
+      <element>rssfeed</element>
+      <element>sharing</element>
+      <element>bannerexterno</element>
+    </value>
+  </record>
+  
+  <record field="available_tiles"
+          interface="collective.cover.controlpanel.ICoverSettings"
+          name="collective.cover.controlpanel.ICoverSettings.available_tiles">
+    <value purge="false">
+	  <element>accordion</element>
+	  <element>iframe</element>
+	  <element>listfoldercontents</element>
+	  <element>rssfeed</element>
+	  <element>sharing</element>
+	  <element>bannerexterno</element>
+    </value>
+  </record>
+  
+  <record name="collective.cover.controlpanel.ICoverSettings.styles" interface="collective.cover.controlpanel.ICoverSettings" field="styles">
+    <value purge="false">
+       <element>Box Destaque|box-destaque</element>
+       <element>Box Azul|box-azul</element>
+       <element>Box Verde|box-verde</element>
+       <element>Box Amarelo|box-amarelo</element>
+       <element>Box Cinza|box-cinza</element>
+       <element>Box Gradiente Cinza|box-gradiente-cinza</element>
+    </value>
+  </record>
+</registry>

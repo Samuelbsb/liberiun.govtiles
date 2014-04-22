@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="brasil.gov.tiles">
+
+<body>
+    <div class="list-folder" tal:define="dados view/get_dados">
+        <ul class="list-central">
+            <li class="item-central" tal:repeat="folder dados/list">
+                <h3>
+	                <a tal:content="folder/title"
+	                   tal:attributes="href folder/url;
+	                                   title folder/title">Titulo</a>
+                </h3>
+            </li>
+        </ul>            
+        
+    </div>
+</body>
+</html>

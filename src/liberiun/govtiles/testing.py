@@ -33,7 +33,8 @@ class Fixture(PloneSandboxLayer):
         self.loadZCML(package=liberiun.govtiles)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'liberiun.govtiles:default')
+        self.applyProfile(portal, 'liberiun.govtiles:default')
+
 
 FIXTURE = Fixture()
 INTEGRATION_TESTING = IntegrationTesting(
@@ -49,3 +50,12 @@ ROBOT_TESTING = FunctionalTesting(
     bases=(FIXTURE, AUTOLOGIN_LIBRARY_FIXTURE, z2.ZSERVER_FIXTURE),
     name='liberiun.govtiles:Robot',
 )
+
+
+class BaseIntegrationTestCase(unittest.TestCase):
+
+    layer = INTEGRATION_TESTING
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+        self.request = self.layer['request']

@@ -21,6 +21,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="liberiun.govtiles:uninstall"
+      directory="profiles/uninstall"
+      description="Uninstalls the liberiun.govtiles package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
   <browser:resourceDirectory
       name="liberiun.govtiles"
       directory="static"

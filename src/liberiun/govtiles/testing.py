@@ -1,17 +1,11 @@
 # -*- coding: utf-8 -*-
-
-from App.Common import package_home
-from PIL import Image
 from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
-from StringIO import StringIO
 
-import os
-import random
 import unittest
 
 
@@ -23,16 +17,18 @@ class Fixture(PloneSandboxLayer):
         # Load ZCML
         import collective.cover
         self.loadZCML(package=collective.cover)
-        if 'virtual_hosting' not in app.objectIds():
-            # If ZopeLite was imported, we have no default virtual
-            # host monster
-            from Products.SiteAccess.VirtualHostMonster\
-            import manage_addVirtualHostMonster
-            manage_addVirtualHostMonster(app, 'virtual_hosting')
+#        if 'virtual_hosting' not in app.objectIds():
+#            # If ZopeLite was imported, we have no default virtual
+#            # host monster
+#            from Products.SiteAccess.VirtualHostMonster\
+#            import manage_addVirtualHostMonster
+#            manage_addVirtualHostMonster(app, 'virtual_hosting')
         import liberiun.govtiles
         self.loadZCML(package=liberiun.govtiles)
 
     def setUpPloneSite(self, portal):
+        self.applyProfile(portal, 'collective.cover:default')
+        self.applyProfile(portal, 'collective.cover:testfixture')
         self.applyProfile(portal, 'liberiun.govtiles:default')
 
 

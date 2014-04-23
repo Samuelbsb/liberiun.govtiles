@@ -8,19 +8,20 @@ class ISharingTile(IPersistentCoverTile):
     """
     """
 
+
 class SharingTile(PersistentCoverTile):
     """ Baseado em sc.social.likes
     """
-    
+
     enabled_portal_types = []
     typebutton = ''
     plugins_enabled = []
     render_method = 'plugin'
-    
+
     @property
     def helper(self):
         return getMultiAdapter((self.context, self.request), name=u'sl_helper')
-    
+
     def plugins(self):
         context = self.context
         render_method = self.render_method
@@ -33,4 +34,3 @@ class SharingTile(PersistentCoverTile):
                 rendered.append({'id': plugin.id,
                                  'html': html})
         return rendered
-    

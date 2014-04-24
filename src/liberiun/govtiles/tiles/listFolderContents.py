@@ -25,6 +25,11 @@ class ListFolderContentsTile(PersistentCoverTile):
     def portal_catalog(self):
         return self.context.portal_catalog
 
+    def accepted_ct(self):
+        """ Returna uma lista com os conteudos aceitos no tile
+        """
+        return ['Folder']
+
     def populate_with_object(self, obj):
         """ Fará o set do uuid do objeto recebido por drag drop
         """

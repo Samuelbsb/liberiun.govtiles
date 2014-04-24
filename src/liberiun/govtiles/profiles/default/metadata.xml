@@ -3,5 +3,6 @@
   <version>1000</version>
   <dependencies>
     <dependency>profile-collective.cover:default</dependency>
+    <dependency>profile-sc.social.like:default</dependency>
   </dependencies>
 </metadata>

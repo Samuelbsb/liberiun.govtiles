@@ -15,6 +15,7 @@ import unittest
 
 DEPENDENCIES = [
     'collective.cover',
+    'sc.social.like',
 ]
 
 TILES = [

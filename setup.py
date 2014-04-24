@@ -45,7 +45,8 @@ setup(name='liberiun.govtiles',
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'brasil.gov.portal',
+        'collective.cover',
+        'sc.social.like',
         ],
     extras_require={
         'test': [

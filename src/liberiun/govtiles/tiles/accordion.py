@@ -42,6 +42,11 @@ class AccordionTile(PersistentCoverTile):
             })
             self.set_tile_configuration(conf)
 
+    def accepted_ct(self):
+        """ Returna uma lista com os conteudos aceitos no tile
+        """
+        return ['Folder']
+
     def get_uuid_object(self):
         """ Obtem o brain do objeto cujo attr uuid faz referencia.
         """

@@ -30,6 +30,15 @@ class Fixture(PloneSandboxLayer):
         self.applyProfile(portal, 'collective.cover:default')
         self.applyProfile(portal, 'collective.cover:testfixture')
         self.applyProfile(portal, 'liberiun.govtiles:default')
+        self.applyProfile(portal, 'liberiun.govtiles:testfixture')
+
+        # reindex objects to update catalog
+        folder1 = portal['my-folder1']
+        folder1.reindexObject()
+        myfolder1 = folder1['my-subfolder1']
+        myfolder1.reindexObject()
+        myfolder2 = folder1['my-subfolder2']
+        myfolder2.reindexObject()
 
 
 FIXTURE = Fixture()

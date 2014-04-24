@@ -26,7 +26,7 @@ class Fixture(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         self.applyProfile(portal, 'collective.cover:default')
-        self.applyProfile(portal, 'collective.cover:testfixture')
+#        self.applyProfile(portal, 'collective.cover:testfixture')
         self.applyProfile(portal, 'liberiun.govtiles:default')
         self.applyProfile(portal, 'liberiun.govtiles:testfixture')
 

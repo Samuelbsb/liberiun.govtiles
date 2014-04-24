@@ -14,7 +14,7 @@
                        tal:attributes="href page/url">
 	                    <span tal:condition="page/icone_url"
                               class="accordion_icone">
-	                        <img tal:attributes="src page/icone_url"></img>
+	                        <img tal:attributes="src page/icone_url" />
 	                    </span>
 	                    <span class="accordion_title">
 	                        <span tal:content="page/title" >page title</span>

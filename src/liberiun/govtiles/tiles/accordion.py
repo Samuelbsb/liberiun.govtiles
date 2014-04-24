@@ -19,7 +19,8 @@ class IAccordionTile(IPersistentCoverTile):
 
 
 class AccordionTile(PersistentCoverTile):
-    is_configurable = True
+    is_configurable = False
+    is_editable = False
 
     @property
     def portal_catalog(self):

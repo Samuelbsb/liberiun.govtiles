@@ -33,9 +33,9 @@ class AccordionTileTestCase(unittest.TestCase):
         self.assertTrue(verifyObject(IPersistentCoverTile, tile))
 
     def test_default_configuration(self):
-        self.assertTrue(self.tile.is_configurable)
+        self.assertFalse(self.tile.is_configurable)
         self.assertTrue(self.tile.is_droppable)
-        self.assertTrue(self.tile.is_editable)
+        self.assertFalse(self.tile.is_editable)
 
     def test_accepted_content_types(self):
         self.assertEqual(self.tile.accepted_ct(), ['Folder'])

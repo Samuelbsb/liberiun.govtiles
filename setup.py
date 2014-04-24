@@ -51,7 +51,7 @@ setup(name='liberiun.govtiles',
     extras_require={
         'test': [
             'plone.app.robotframework',
-            'plone.app.testing [robot]',
+            'plone.app.testing [robot] >=4.2.2'
             'plone.testing',
             'mock',
             ],

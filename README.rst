@@ -16,6 +16,12 @@ Estado deste pacote
 
 O **liberiun.govtiles** está estável e atualmente é usado nos portais da Ouvidoria e do PPA.
 
+.. image:: https://travis-ci.org/liberiun/liberiun.govtiles.png?branch=master
+	:target: https://travis-ci.org/liberiun/liberiun.govtiles
+
+.. image:: https://coveralls.io/repos/liberiun/liberiun.govtiles/badge.png
+	:target: https://coveralls.io/r/liberiun/liberiun.govtiles
+
 Instalação
 ----------
 

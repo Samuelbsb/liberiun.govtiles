@@ -1,5 +1,16 @@
 @CHARSET "UTF-8";
 
+/* CSS Geral */
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+.clearfix:after {
+  clear: both; }
+  
+ul.no-bullet { list-style: none; }
+ul.no-bullet li { list-style: none !important; }
+
 /* Tile accordion */
 #content .accordion ul, #content .list-folder ul{
 	margin: 0;
@@ -245,4 +256,56 @@
 	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(230,231,232,1) 100%); /* IE10+ */
 	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(230,231,232,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e7e8',GradientType=0 ); /* IE6-8 */
+}
+
+
+/* Layout da paginacao */
+
+.navigation-govtiles { float: right; }
+
+.navigation-govtiles .arrow {
+	display: inline-block;
+	height: 21px;
+	width: 20px;
+	text-align: center;
+	font-size: 19px;
+	background: #616161;
+	border-radius: 1px;
+	margin-left: 7px;
+}
+
+.navigation-govtiles .arrow a { color: #F3F3F3 !important; }
+.navigation-govtiles .arrow a:hover { color: #FFF !important; }
+
+/* Ajustes no Layout do Tile de Carrosel Paginado */
+
+.tile-pagedcarousel { position: relative; }
+
+.tile-pagedcarousel .navigation-govtiles {
+	position: absolute;
+	top: 11px;
+	right: 0;
+}
+
+.tile-pagedcarousel .container-info .ico-area {
+	float: left;
+	padding: 11px 7px;
+	background: #5C5C5C;
+	color: #FFF;
+	border-radius: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.tile-pagedcarousel .container-info .info-item {
+	float: left;
+	line-height: 1.1em;
+}
+.tile-pagedcarousel .container-info .info-item > span { display: block; }
+
+.tile-pagedcarousel .title-item {
+	margin-bottom: 10px;
+	word-break: break-all;
+    min-height: 30px;
 }

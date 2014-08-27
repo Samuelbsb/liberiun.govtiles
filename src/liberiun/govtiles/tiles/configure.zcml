@@ -83,5 +83,18 @@
       for="*"
       i18n:attributes=""
       />
+      
+  <plone:tile
+      name="pagedcarousel"
+      title="Carrossel Paginado"
+      description="Tile que lista documentos ou práticas de uma pasta ou em destaque."
+      add_permission="cmf.ModifyPortalContent"
+      schema=".pagedcarousel.IPagedCarouselTile"
+      class=".pagedcarousel.PagedCarouselTile"
+      template="templates/pagedcarousel.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
 
 </configure>

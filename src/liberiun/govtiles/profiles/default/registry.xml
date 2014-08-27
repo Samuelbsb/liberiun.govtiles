@@ -8,6 +8,7 @@
       <element>rssfeed</element>
       <element>sharing</element>
       <element>bannerexterno</element>
+      <element>pagedcarousel</element>
     </value>
   </record>
   
@@ -21,6 +22,7 @@
 	  <element>rssfeed</element>
 	  <element>sharing</element>
 	  <element>bannerexterno</element>
+	  <element>pagedcarousel</element>
     </value>
   </record>
   

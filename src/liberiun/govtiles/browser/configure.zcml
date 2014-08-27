@@ -1,0 +1,25 @@
+<configure
+    xmlns:browser="http://namespaces.zope.org/browser"
+	xmlns="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="liberiun.govtiles">
+
+   
+  <!-- Views -->  
+  <browser:page
+        for="*"
+        name="countaccessview"
+        class=".countaccessview.CountAccessView"
+        permission="zope2.View"
+        allowed_attributes=""
+        />
+        
+  <browser:page
+        for="*"
+        name="govtilesbatchview"
+        class=".govtilesbatchview.GovTilesBatchView"
+        permission="zope2.View"
+        allowed_attributes=""
+        />
+
+</configure>

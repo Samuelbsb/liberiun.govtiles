@@ -15,7 +15,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="liberiun.govtiles"
+      title="Liberiun Gov: Tiles"
       directory="profiles/default"
       description="Installs the liberiun.govtiles package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -23,17 +23,17 @@
 
   <genericsetup:registerProfile
       name="testfixture"
-      title="liberiun.govtiles:testfixture"
+      title="Liberiun Gov: Tiles testfixture"
       directory="profiles/testfixture"
-      description="Uninstalls the liberiun.govtiles package"
+      description="Tests for liberiun.govtiles package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
   <genericsetup:registerProfile
       name="uninstall"
-      title="liberiun.govtiles:uninstall"
+      title="Liberiun Gov: Tiles Uninstall"
       directory="profiles/uninstall"
-      description="Tests for liberiun.govtiles package"
+      description="Uninstalls the liberiun.govtiles package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

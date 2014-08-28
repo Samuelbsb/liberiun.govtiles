@@ -54,6 +54,9 @@ table {
   table tr td {
     display: table-cell;
     line-height: 1.125rem; }
+  table td {
+    vertical-align: top;
+  }
 
 /* Tile accordion */
 #content .accordion ul, #content .list-folder ul{
@@ -338,7 +341,7 @@ table {
 	right: 0;
 }
 
-.tile-pagedcarousel .container-info .ico-area {
+.ico-filetype-area {
 	float: left;
 	padding: 11px 7px;
 	background: #5C5C5C;

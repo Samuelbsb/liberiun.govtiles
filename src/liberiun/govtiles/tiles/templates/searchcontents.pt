@@ -4,16 +4,14 @@ xmlns:tal="http://xml.zope.org/namespaces/tal"
 xmlns:i18n="http://xml.zope.org/namespaces/i18n"
 i18n:domain="liberiun.govtile">
 
-<head>
-    <!-- <script type="text/javascript" src="" tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/easy_ajax.js"></script>
-    <script type="text/javascript" src="" tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/pagedcarousel.js"></script> -->
-</head>
-
 <body tal:define="data view/get_dados;
                   title data/title;
                   htmltag data/title_htmltag;
                   results data/list|nothing;
                   all_subjects data/all_subjects|nothing;
+                  portal_type_selected data/portal_type_selected|nothing;
+                  is_file python: portal_type_selected == 'File' and True or False;
+                  is_pratica not: is_file;
                   uuid view/id">
   
     <div class="tile-searchcontents">
@@ -45,9 +43,19 @@ i18n:domain="liberiun.govtile">
                     <div class="mid-filter clearfix">
                         
                         <div class="cell width-5 position-0">
-                            <div>
+                            <div tal:condition="is_pratica">
                                 <div>
                                     <label>Orgão Responsável</label>
+                                </div>
+                                <div>
+                                    <select>
+                                        <option>Todos</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div tal:condition="is_file">
+                                <div>
+                                    <label>Tipo</label>
                                 </div>
                                 <div>
                                     <select>
@@ -71,6 +79,16 @@ i18n:domain="liberiun.govtile">
                         </div>
                         
                         <div class="cell width-5 position-5">
+                            <div tal:condition="is_file">
+                                <div>
+                                    <label>Formato</label>
+                                </div>
+                                <div>
+                                    <select>
+                                        <option>Todos</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div>
                                 <div>
                                     <label>Assunto</label>
@@ -109,7 +127,6 @@ i18n:domain="liberiun.govtile">
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                     
                     <div class="bot-filter clearfix">
@@ -120,8 +137,8 @@ i18n:domain="liberiun.govtile">
                                                    ajax-filter id_ajax;" />
                         </div>
                     </div>
+                    
                 </form>
-
             </div>
             
             <div class="container-results"
@@ -135,16 +152,18 @@ i18n:domain="liberiun.govtile">
                                   batch python:Batch(results, b_size, int(b_start));">
                   
                     <tal:govtilesbatchview define="govtilesbatchview nocall:context/@@govtilesbatchview;"
-                                           replace="structure python:govtilesbatchview(batch, show_page_range=True, ajaxcontentid=id_ajax)" />
+                                           replace="structure python:govtilesbatchview(batch, show_page_range=True, ajaxcontentid=id_ajax)"></tal:govtilesbatchview>
                                            
                     <div class="table-box">
-                        
                         <table>
                             <thead>
                                 <tr>
+                                    <th tal:condition="is_file" width="62">Formato</th>
                                     <th>Título</th>
-                                    <th>Órgão Reponsável</th>
-                                    <th>Data</th>
+                                    <th tal:condition="is_file" width="100">Tipo</th>
+                                    <th tal:condition="is_pratica" width="200">Órgão Reponsável</th>
+                                    <th width="85">Data</th>
+                                    <th tal:condition="is_file" width="70">Tamanho</th>
                                 </tr>
                             </thead>
                             
@@ -152,65 +171,24 @@ i18n:domain="liberiun.govtile">
                                 
                                 <tal:rep repeat="item batch">
                                     <tr>
+                                        <td tal:condition="is_file">
+                                            <div class="ico-filetype-area">
+                                                <span tal:content="item/content_type"></span>
+                                            </div>
+                                        </td>
                                         <td><a tal:attributes="href item/url"><strong tal:content="item/title"></strong></a></td>
-                                        <td><span tal:content="item/org_resposavel"></span></td>
+                                        <td><span tal:content="item/generic_type"></span></td>
                                         <td><span tal:content="item/created"></span></td>
+                                        <td tal:condition="is_file"><span tal:content="item/file_size"></span></td>
                                     </tr>
                                 </tal:rep>
 
                             </tbody>
                         </table>
-                        
                     </div>
-                     
                 </div>
-                
-            </div>
-            
-        </div>
-        
-        <!--div tal:attributes="ajax-content string:content-batch-${uuid}" >
-        
-            <div class="clearfix" tal:define="Batch python:modules['Products.CMFPlone'].Batch;
-                                              b_size python:3;
-                                              b_start python:0;
-                                              b_start request/b_start | b_start;
-                                              batch python:Batch(results, b_size, int(b_start));">
-                
-                <tal:govtilesbatchview define="govtilesbatchview nocall:context/@@govtilesbatchview;
-                                               ajaxid string:content-batch-${uuid}"
-                    replace="structure python:govtilesbatchview(batch, ajaxcontentid=ajaxid)" />
-        
-                <tal:rep tal:repeat="item batch">
-                    <div tal:attributes="class python:'cell width-5 position-%s' % (repeat['item'].index*5)" class="">
-                        <tal:def define="portal_type item/portal_type;">
-                            
-                            <p tal:content="item/generic_type">CARTILHA</p>
-                            
-                            <div class="title-item">
-                                <h4><a tal:attributes="href item/url|nothing" tal:content="item/title|nothing"></a></h4>
-                            </div>
-                            
-                            <div class="container-info">
-                                <div class="ico-area" tal:condition="python:portal_type == 'File'">
-                                    <span tal:content="item/content_type"></span>
-                                </div>
-                                
-                                <div class="info-item" tal:define="access item/access|nothing;">
-                                    <span>Adicionado em: <span tal:replace="item/created|nothing"></span></span>
-                                    <span>Acessos: <span tal:replace="python: (access) and access or '0'"></span></span>
-                                    <tal:cond condition="python:portal_type=='File'">
-                                        <span>Tamanho: <span tal:replace="item/file_size|nothing"></span></span>
-                                    </tal:cond>
-                                </div>
-                            </div>
-                        </tal:def>
-                    </div>
-                </tal:rep>
             </div>
         </div>
-    </div-->
-
     </div>
 </body>
 </html>

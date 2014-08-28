@@ -48,7 +48,7 @@
                             </div>
                             
                             <div class="container-info">
-                                <div class="ico-area" tal:condition="python:portal_type == 'File'">
+                                <div class="ico-filetype-area" tal:condition="python:portal_type == 'File'">
                                     <span tal:content="item/content_type"></span>
                                 </div>
                                 

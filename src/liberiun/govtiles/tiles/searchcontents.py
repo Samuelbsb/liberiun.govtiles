@@ -14,6 +14,12 @@ from collective.cover import _
 
 from DateTime import DateTime
 
+FILE_CONTENT_TYPES = {
+    'PDF' : ['application/pdf', 'application/x-pdf', 'image/pdf'],
+    'DOC' : ['application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    'PPT' : ['application/vnd.ms-powerpoint', 'application/powerpoint', 'application/mspowerpoint', 'application/x-mspowerpoint'],
+    'XLS' : ['application/vnd.ms-excel', 'application/msexcel', 'application/x-msexcel'],
+}
 
 portal_types = SimpleVocabulary(
     [SimpleTerm(value=u'File', title=_(u'Arquivos')),
@@ -107,7 +113,25 @@ class SearchContentsTile(PersistentCoverTile):
             'title': brain.Title,
             'url': brain.getURL()+'/view',
             'created': brain.created.strftime('%d/%m/%Y'),
-            'org_resposavel': 'teste',
         }
+        
+        if brain.portal_type == 'File':
+            object = brain.getObject()
+            data_object['file_size'] = brain.getObjSize
+            
+            #Define e extensao do arquivo baseado no content_type do OBJ
+            file_meta_type = object.file.contentType
+            file_type = ''
+            for type in FILE_CONTENT_TYPES:
+                if file_meta_type in FILE_CONTENT_TYPES[type]:
+                    file_type = type
+            if not file_type:
+                file_type = 'TXT'
+            data_object['content_type'] = file_type
+            data_object['generic_type'] = 'CARTILHA'
+            
+        elif brain.portal_type == 'BoaPratica':
+            object = brain.getObject()
+            data_object['generic_type'] = object.getOrgaoresponsavel()
 
         return data_object

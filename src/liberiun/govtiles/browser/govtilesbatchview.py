@@ -12,13 +12,14 @@ class GovTilesBatchView(BatchView):
     
     index = ViewPageTemplateFile("navigationgovtiles.pt")
     
-    def __call__(self, batch, batchformkeys=None, minimal_navigation=False, ajaxcontentid='content-batch'):
+    def __call__(self, batch, batchformkeys=None, minimal_navigation=False, show_page_range=False, ajaxcontentid='content-batch'):
         super(GovTilesBatchView, self).__call__(batch, batchformkeys, minimal_navigation)
         self.ajaxcontentid = ajaxcontentid
+        self.show_page_range = show_page_range
         return self.index()
         
     
-    def make_link(self, pagenumber=None):
+    def make_link(self, pagenumber=0, pagesize=None):
         form = self.request.form
         
         if self.batchformkeys:
@@ -27,7 +28,11 @@ class GovTilesBatchView(BatchView):
                                     if key in form])
         else:
             batchlinkparams = form.copy()
-
-        start = max(pagenumber - 1, 0) * self.batch.pagesize
+        
+        if not pagesize:
+            pagesize = self.batch.pagesize
+        
+        start = max(pagenumber - 1, 0) * pagesize
         return '%s?%s' % (self.request.ACTUAL_URL, make_query(batchlinkparams,
-                         {self.batch.b_start_str: start}))
+                         {self.batch.b_start_str: start,
+                          'b_size': pagesize}))

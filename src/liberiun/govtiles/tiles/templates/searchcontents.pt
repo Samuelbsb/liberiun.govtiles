@@ -1,0 +1,216 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:metal="http://xml.zope.org/namespaces/metal"
+xmlns:tal="http://xml.zope.org/namespaces/tal"
+xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+i18n:domain="liberiun.govtile">
+
+<head>
+    <!-- <script type="text/javascript" src="" tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/easy_ajax.js"></script>
+    <script type="text/javascript" src="" tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/pagedcarousel.js"></script> -->
+</head>
+
+<body tal:define="data view/get_dados;
+                  title data/title;
+                  htmltag data/title_htmltag;
+                  results data/list|nothing;
+                  all_subjects data/all_subjects|nothing;
+                  uuid view/id">
+  
+    <div class="tile-searchcontents">
+        
+        <div class="tile tile-default">
+            <div class="outstanding-header">
+                <tal:rep replace="structure string:<${htmltag} class='outstanding-title'>"></tal:rep>
+                <span tal:replace="title">Mais Acessados</span>
+                <tal:rep replace="structure string:</h2>"></tal:rep>
+            </div>
+        </div>
+
+        <div class="container-search"
+             tal:define="id_ajax string:results-${uuid};">
+            
+            <div class="container-filter">
+                
+                <form action="" method="GET" class="form-filter use-ajax">
+                    <div class="top-filter clearfix">
+                        <div class="left">
+                            <span>- Refinar Busca</span>
+                        </div>
+                        
+                        <div class="right">
+                            <input type="text" value="" name="SearchableText" placeholder="Palavra-chave"/>
+                        </div>
+                    </div>
+                    
+                    <div class="mid-filter clearfix">
+                        
+                        <div class="cell width-5 position-0">
+                            <div>
+                                <div>
+                                    <label>Orgão Responsável</label>
+                                </div>
+                                <div>
+                                    <select>
+                                        <option>Todos</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label>Tag</label>
+                                </div>
+                                <div>
+                                    <select name="Subject">
+                                        <option value="">Todos</option>
+                                        <tal:rep repeat="item all_subjects">
+                                            <option tal:content="item" tal:attributes="value item;"></option>
+                                        </tal:rep>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cell width-5 position-5">
+                            <div>
+                                <div>
+                                    <label>Assunto</label>
+                                </div>
+                                <div>
+                                    <select>
+                                        <option>Todos</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cell width-5 position-10">
+                            <div>
+                                <label>Data de Cadastro</label>
+                            </div>
+                            
+                            <div class="dates-box clearfix">
+                                
+                                <div class="left">
+                                    <div>
+                                        <label>inicio</label>
+                                    </div>
+                                    <div>
+                                        <input type="date" name="date-created-start">
+                                    </div>
+                                </div>
+                                
+                                <div class="left">
+                                    <div>
+                                        <label>término</label>
+                                    </div>
+                                    <div>
+                                    <input type="date" name="date-created-end">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="bot-filter clearfix">
+                        <div class="buttons-box right">
+                            <input type="button" name="submitted" value="Buscar" 
+                                   tal:attributes="ajax-url view/url;
+                                                   ajax-id id_ajax;
+                                                   ajax-filter id_ajax;" />
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            
+            <div class="container-results"
+                 tal:condition="results">
+                 
+                <div class="results-search" tal:attributes="ajax-content id_ajax;"
+                      tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                                  b_size request/b_size|python:10;
+                                  b_start python:0;
+                                  b_start request/b_start | b_start;
+                                  batch python:Batch(results, b_size, int(b_start));">
+                  
+                    <tal:govtilesbatchview define="govtilesbatchview nocall:context/@@govtilesbatchview;"
+                                           replace="structure python:govtilesbatchview(batch, show_page_range=True, ajaxcontentid=id_ajax)" />
+                                           
+                    <div class="table-box">
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Órgão Reponsável</th>
+                                    <th>Data</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                
+                                <tal:rep repeat="item batch">
+                                    <tr>
+                                        <td><a tal:attributes="href item/url"><strong tal:content="item/title"></strong></a></td>
+                                        <td><span tal:content="item/org_resposavel"></span></td>
+                                        <td><span tal:content="item/created"></span></td>
+                                    </tr>
+                                </tal:rep>
+
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                     
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!--div tal:attributes="ajax-content string:content-batch-${uuid}" >
+        
+            <div class="clearfix" tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                                              b_size python:3;
+                                              b_start python:0;
+                                              b_start request/b_start | b_start;
+                                              batch python:Batch(results, b_size, int(b_start));">
+                
+                <tal:govtilesbatchview define="govtilesbatchview nocall:context/@@govtilesbatchview;
+                                               ajaxid string:content-batch-${uuid}"
+                    replace="structure python:govtilesbatchview(batch, ajaxcontentid=ajaxid)" />
+        
+                <tal:rep tal:repeat="item batch">
+                    <div tal:attributes="class python:'cell width-5 position-%s' % (repeat['item'].index*5)" class="">
+                        <tal:def define="portal_type item/portal_type;">
+                            
+                            <p tal:content="item/generic_type">CARTILHA</p>
+                            
+                            <div class="title-item">
+                                <h4><a tal:attributes="href item/url|nothing" tal:content="item/title|nothing"></a></h4>
+                            </div>
+                            
+                            <div class="container-info">
+                                <div class="ico-area" tal:condition="python:portal_type == 'File'">
+                                    <span tal:content="item/content_type"></span>
+                                </div>
+                                
+                                <div class="info-item" tal:define="access item/access|nothing;">
+                                    <span>Adicionado em: <span tal:replace="item/created|nothing"></span></span>
+                                    <span>Acessos: <span tal:replace="python: (access) and access or '0'"></span></span>
+                                    <tal:cond condition="python:portal_type=='File'">
+                                        <span>Tamanho: <span tal:replace="item/file_size|nothing"></span></span>
+                                    </tal:cond>
+                                </div>
+                            </div>
+                        </tal:def>
+                    </div>
+                </tal:rep>
+            </div>
+        </div>
+    </div-->
+
+    </div>
+</body>
+</html>

@@ -96,5 +96,18 @@
       for="*"
       i18n:attributes=""
       />
+      
+  <plone:tile
+      name="searchcontents"
+      title="Busca de Conteúdos (Práticas e Arquivo)"
+      description="Tile com opções de busca para arquivos e práticas no portal."
+      add_permission="cmf.ModifyPortalContent"
+      schema=".searchcontents.ISearchContentsTile"
+      class=".searchcontents.SearchContentsTile"
+      template="templates/searchcontents.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
 
 </configure>

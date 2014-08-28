@@ -9,6 +9,7 @@
       <element>sharing</element>
       <element>bannerexterno</element>
       <element>pagedcarousel</element>
+      <element>searchcontents</element>
     </value>
   </record>
   
@@ -23,6 +24,7 @@
 	  <element>sharing</element>
 	  <element>bannerexterno</element>
 	  <element>pagedcarousel</element>
+	  <element>searchcontents</element>
     </value>
   </record>
   

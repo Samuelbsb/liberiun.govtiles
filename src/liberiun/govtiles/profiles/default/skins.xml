@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object name="portal_skins"
+        meta_type="Plone Skins Tool"
+        allow_any="False"
+        cookie_persistence="False"
+        request_varname="plone_skin">
+
+	<object name="liberiun_govtiles"
+	        meta_type="Filesystem Directory View"
+	        directory="liberiun.govtiles:skins/liberiun_govtiles"/>
+ 
+	<skin-path name="*">
+		<layer insert-after="custom" 
+		       name="liberiun_govtiles"/>
+	</skin-path>
+	
+</object>
+

@@ -9,7 +9,11 @@
   <includeDependencies package="." />
 
   <include package=".tiles" />
-
+  <include package=".browser" />
+  
+  <include file="storm.zcml" />
+  <include file="skins.zcml" />
+    
   <include package="five.grok" />
   <grok:grok package="." />
 

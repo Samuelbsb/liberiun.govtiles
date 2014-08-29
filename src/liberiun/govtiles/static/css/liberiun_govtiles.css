@@ -1,5 +1,63 @@
 @CHARSET "UTF-8";
 
+/* CSS Geral */
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+.clearfix:after {
+  clear: both; }
+  
+ul.no-bullet { list-style: none; }
+ul.no-bullet li { list-style: none !important; }
+
+table {
+  background: white;
+  margin-bottom: 1.25rem;
+  border: solid 1px #dddddd;
+  table-layout: fixed;
+  width: 100%; }
+  table caption {
+    background: transparent;
+    color: #222222;
+    font-size: 1rem;
+    font-weight: bold; }
+  table thead {
+    background: whitesmoke; }
+    table thead tr th,
+    table thead tr td {
+      padding: 0.5rem 0.625rem 0.625rem;
+      font-size: 0.875rem;
+      font-weight: bold;
+      color: #222222; }
+  table tfoot {
+    background: whitesmoke; }
+    table tfoot tr th,
+    table tfoot tr td {
+      padding: 0.5rem 0.625rem 0.625rem;
+      font-size: 0.875rem;
+      font-weight: bold;
+      color: #222222; }
+  table tr th,
+  table tr td {
+    padding: 0.5625rem 0.625rem;
+    font-size: 0.875rem;
+    color: #222222;
+    text-align: left; }
+  table tr.even, table tr.alt, table tr:nth-of-type(even) {
+    background: #f9f9f9; }
+  table thead tr th,
+  table tfoot tr th,
+  table tfoot tr td,
+  table tbody tr th,
+  table tbody tr td,
+  table tr td {
+    display: table-cell;
+    line-height: 1.125rem; }
+  table td {
+    vertical-align: top;
+  }
+
 /* Tile accordion */
 #content .accordion ul, #content .list-folder ul{
 	margin: 0;
@@ -246,3 +304,143 @@
 	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(230,231,232,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e7e8',GradientType=0 ); /* IE6-8 */
 }
+
+
+/* Layout da paginacao */
+
+.navigation-govtiles .page-range { float: left; }
+
+.navigation-govtiles .page-range a.selected { 
+	font-size: 15px;
+    font-weight: bolder; 
+}
+
+.navigation-govtiles .navigation { float: right; }
+
+.navigation-govtiles .navigation .arrow {
+	display: inline-block;
+	height: 21px;
+	width: 20px;
+	text-align: center;
+	font-size: 19px;
+	background: #616161;
+	border-radius: 1px;
+	margin-left: 7px;
+}
+
+.navigation-govtiles .navigation .arrow a { color: #F3F3F3 !important; }
+.navigation-govtiles .navigation .arrow a:hover { color: #FFF !important; }
+
+/* Ajustes no Layout do Tile de Carrosel Paginado */
+
+.tile-pagedcarousel { position: relative; }
+
+.tile-pagedcarousel .navigation-govtiles {
+	position: absolute;
+	top: 11px;
+	right: 0;
+}
+
+.ico-filetype-area {
+	float: left;
+	padding: 11px 7px;
+	background: #5C5C5C;
+	color: #FFF;
+	border-radius: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.tile-pagedcarousel .container-info .info-item {
+	float: left;
+	line-height: 1.1em;
+}
+.tile-pagedcarousel .container-info .info-item > span { display: block; }
+
+.tile-pagedcarousel .title-item {
+	margin-bottom: 10px;
+	word-break: break-all;
+    min-height: 30px;
+}
+
+/* Layout da Busca Tabelada */
+
+.container-search .container-filter { 
+	border: #AAA solid 1px;
+	background: #F3F3F3;
+}
+    
+    .container-search .container-filter .mid-filter select,
+    .container-search .container-filter .mid-filter input[type="text"] {
+        margin: 7px 0 17px 0; 
+    }
+    
+    .container-search .container-filter .mid-filter select { 
+        width: 100%;
+    }
+    
+    .container-search .container-filter .top-filter,
+    .container-search .container-filter .mid-filter,
+    .container-search .container-filter .bot-filter {
+        padding: 10px;
+    }
+
+	.container-search .container-filter .top-filter { 
+	    border-bottom: #AAA solid 1px; 
+	}
+
+    .container-search .container-filter .mid-filter {
+        background: #FFF;
+        border-bottom: #AAA solid 1px;
+    }
+    
+    .container-search .container-filter .dates-box {
+        margin-top: 7px;
+    }
+    
+    .container-search .container-filter .dates-box input.date {
+        width: 75px;
+		font-size: 12px;
+		text-align: left;
+		padding: 3px;
+    }
+    
+    .container-search .container-filter .top-filter .left,
+    .container-search .container-filter .top-filter .right {
+        margin: 0;
+    }
+    
+    
+    .container-search .container-filter .top-filter span {
+        font-size: 14px;
+        margin-top: 5px;
+        display: block;
+    }
+    
+    .container-search .container-filter .top-filter input[type="text"] {
+        padding: 4px;
+		width: 205px;
+		font-size: 13px;
+    }
+    
+    .container-search .navigation-govtiles { padding: 15px 10px 10px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

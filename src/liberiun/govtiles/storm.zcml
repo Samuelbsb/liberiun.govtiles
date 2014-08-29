@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="liberiun.govtiles">
+
+    <!-- Storm Configuration  -->
+    <store name="govtiles_DB"
+           uri="mysql://root:root@localhost/liberiun_govtiles_DB" />  
+      
+    <!-- mysql://usuario:senha@servidor/base_de_dados -->
+
+</configure>

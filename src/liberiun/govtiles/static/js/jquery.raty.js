@@ -5,6 +5,7 @@
  *
  * @author  : Washington Botelho
  * @doc     : http://wbotelhos.com/raty
+ * @git     : https://github.com/wbotelhos/raty
  * @version : 2.7.0
  *
  */

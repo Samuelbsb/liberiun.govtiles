@@ -15,9 +15,9 @@ $(document).ready(function () {
 		   data: {'rate': value},
 		   success: function(data){
 			   var $dom = $(data);
-			   $.get('++resource++liberiun.govtiles/js/contentrating.js', function(result){
-                   $.globalEval(result); 
-               });
+			   $.get('++resource++liberiun.govtiles/js/contentrating.js', function(result){ 
+				   $.globalEval(result); 
+			   });
 			   $('.rate-container').html($dom.find('.rate-container').contents());
 		   }
 		});

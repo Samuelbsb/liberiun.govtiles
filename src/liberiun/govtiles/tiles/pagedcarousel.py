@@ -146,7 +146,7 @@ class PagedCarouselTile(PersistentCoverTile):
             'type_display': type_display,
             'content_type': content_type,
             'title_htmltag': self.get_tile_configuration()['title']['htmltag'],
-            'list': [self._brain_for_dict(brain) for brain in brains]
+            'list': [self._brain_for_dict(brain) for brain in brains if brain]
         }
         
     def _brain_for_dict(self, brain):

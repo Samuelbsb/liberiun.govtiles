@@ -48,8 +48,11 @@ i18n:domain="liberiun.govtile">
                                     <label>Orgão Responsável</label>
                                 </div>
                                 <div>
-                                    <select>
-                                        <option>Todos</option>
+                                    <select name="orgaoresponsavel">
+                                        <option value="">Todos</option>
+                                        <tal:rep repeat="item data/all_orgaoresponsavel" tal:condition="data/all_orgaoresponsavel|nothing">
+                                            <option tal:content="item" tal:attributes="value item;"></option>
+                                        </tal:rep>
                                     </select>
                                 </div>
                             </div>

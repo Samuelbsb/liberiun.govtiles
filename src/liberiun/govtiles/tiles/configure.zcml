@@ -109,5 +109,19 @@
       for="*"
       i18n:attributes=""
       />
+      
+  <plone:tile
+      name="moresearchterms"
+      title="Termos Mais Buscados"
+      description="Tile com as buscas mais efetuadas no Tile de Busca."
+      add_permission="cmf.ModifyPortalContent"
+      schema=".moresearchterms.IMoreSearchTermsTile"
+      class=".moresearchterms.MoreSearchTermsTile"
+      template="templates/moresearchterms.pt"
+      permission="zope2.View"
+      for="*"
+      i18n:attributes=""
+      />
+      
 
 </configure>

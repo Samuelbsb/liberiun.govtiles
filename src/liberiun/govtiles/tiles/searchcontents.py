@@ -14,6 +14,8 @@ from collective.cover import _
 
 from DateTime import DateTime
 
+from liberiun.govtiles.models.searchterms import SearchTerms
+
 FILE_CONTENT_TYPES = {
     'PDF' : ['application/pdf', 'application/x-pdf', 'image/pdf'],
     'DOC' : ['application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
@@ -57,9 +59,12 @@ class SearchContentsTile(PersistentCoverTile):
         brains = []
         request = self.request
         form = request.form
+        folder_context = self.context.aq_parent
+        
+        results = {}
         
         if portal_type_selected:
-            query = {'path': {'query': '/'.join(self.context.aq_parent.getPhysicalPath()), 'depth': 99},
+            query = {'path': {'query': '/'.join(folder_context.getPhysicalPath()), 'depth': 99},
                      'portal_type': portal_type_selected,}
             
             if form.get('submitted', False):
@@ -69,6 +74,9 @@ class SearchContentsTile(PersistentCoverTile):
                     if (field in indexes or 'date-' in field) and value:
                         
                         if field == 'SearchableText':
+                            SearchTerms().manageSearchTerms(**{'value': value,
+                                                               'uid': folder_context.UID(),
+                                                               'type_object': portal_type_selected})
                             value = '*%s*' % form[field]
                         elif 'date-' in field:
                             date, index, field = field.split('-')
@@ -91,19 +99,29 @@ class SearchContentsTile(PersistentCoverTile):
                                 
                             continue
                         else:
-                            value = form[field]
-
+                            
+                            if field == 'Subject':
+                                value= form[field]
+                            else:
+                                value = form[field].decode('utf-8')
+                        
                         query[field] = value
             
             brains = self.portal_catalog(query)
         
-        return {
+        
+        results = {
             'title': self.data.get('title', None),
             'portal_type_selected': portal_type_selected,
             'title_htmltag': self.get_tile_configuration()['title']['htmltag'],
-            'list': [self._brain_for_dict(brain) for brain in brains],
+            'list': [self._brain_for_dict(brain) for brain in brains if brain],
             'all_subjects': all_subjects,
         }
+        
+        if portal_type_selected == 'BoaPratica':
+            results['all_orgaoresponsavel'] = self.portal_catalog.uniqueValuesFor('orgaoresponsavel')
+        
+        return results
         
     def _brain_for_dict(self, brain):
         '''

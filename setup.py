@@ -47,6 +47,8 @@ setup(name='liberiun.govtiles',
         'setuptools',
         'collective.cover',
         'sc.social.like',
+        'storm',
+        'MySQL-python',
         ],
     extras_require={
         'test': [

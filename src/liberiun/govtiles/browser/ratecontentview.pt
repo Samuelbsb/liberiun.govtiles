@@ -1,0 +1,23 @@
+<!-- Navigation -->
+<tal:ratecontentview define="my_rate view/my_rate|nothing;
+                             is_anonymous view/is_anonymous|nothing;
+                             content_avg view/content_avg|nothing;
+                             qtd_rate view/qtd_rate|nothing"
+                             
+                       metal:define-macro="ratecontent">
+    <link rel="stylesheet" tal:attributes="href string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/css/jquery.raty.css" href="jquery.raty.css" />
+    <script tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/jquery.raty.js" src="jquery.raty.js"></script>
+    <script tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/contentrating.js" src="jquery.raty.js"></script>
+    
+    <div class="rate-container">
+        
+        <p>
+            Avaliação geral (<span tal:replace="qtd_rate"></span>): <div class="rating" tal:attributes="data-rating content_avg;"></div>
+        </p>
+        
+        <p tal:condition="not:is_anonymous">
+            Sua avaliação: <div class="rating" tal:attributes="data-rating my_rate;"></div>
+        </p>
+        
+    </div>
+</tal:ratecontentview>

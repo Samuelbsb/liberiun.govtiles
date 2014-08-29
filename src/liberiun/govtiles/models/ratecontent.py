@@ -60,7 +60,7 @@ class RateContent(Storm, BaseStore):
         
         uid = self.convertToUTF(uid)
         username = self.convertToUTF(username)
-        
+
         data = self.store.find(RateContent,
                                RateContent.uid == uid,
                                RateContent.username == username,

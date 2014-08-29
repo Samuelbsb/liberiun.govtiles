@@ -12,11 +12,18 @@
     <div class="rate-container">
         
         <p>
-            Avaliação geral (<span tal:replace="qtd_rate"></span>): <div class="rating" tal:attributes="data-rating content_avg;"></div>
+            Avaliação geral (<span tal:replace="qtd_rate"></span>): 
+            <div class="rating rating-geral" tal:attributes="data-rating content_avg;">
+            </div>
         </p>
         
         <p tal:condition="not:is_anonymous">
-            Sua avaliação: <div class="rating" tal:attributes="data-rating my_rate;"></div>
+            
+            Sua avaliação: 
+            <div class="rating my-rating" 
+                 tal:attributes="data-rating my_rate;
+                                 data-url string:${context/absolute_url};">
+            </div>
         </p>
         
     </div>

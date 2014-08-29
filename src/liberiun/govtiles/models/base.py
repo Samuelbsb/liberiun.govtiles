@@ -35,3 +35,10 @@ class BaseStore(object):
 
         # adiciona a data atual
         self.date_created = datetime.now()
+        
+    def convertToUTF(self, string):
+        if isinstance(string, (str, unicode)):
+            if isinstance(string, str):
+                return string.decode('utf-8')
+            return string
+        return False   

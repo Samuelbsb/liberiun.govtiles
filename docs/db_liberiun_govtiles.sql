@@ -42,3 +42,23 @@ CREATE TABLE `lib_govtiles_searchterms` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `my_db_name`.`lib_govtiles_ratecontent`
+--
+
+DROP TABLE IF EXISTS `my_db_name`.`lib_govtiles_ratecontent`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lib_govtiles_ratecontent` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `deleted` tinyint(1) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `date_excluded` datetime DEFAULT NULL,
+  `uid` varchar(100) DEFAULT NULL,
+  `username` varchar(200) DEFAULT NULL,
+  `rate` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;

@@ -21,5 +21,13 @@
         permission="zope2.View"
         allowed_attributes=""
         />
+        
+  <browser:page
+        for="*"
+        name="ratecontentview"
+        class=".ratecontentview.RateContentView"
+        permission="zope2.View"
+        allowed_attributes=""
+        />
 
 </configure>

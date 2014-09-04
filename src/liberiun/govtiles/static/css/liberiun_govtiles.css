@@ -11,51 +11,51 @@
 ul.no-bullet { list-style: none; }
 ul.no-bullet li { list-style: none !important; }
 
-table {
+table.auto-table {
   background: white;
   margin-bottom: 1.25rem;
   border: solid 1px #dddddd;
   table-layout: fixed;
   width: 100%; }
-  table caption {
+  table.auto-table caption {
     background: transparent;
     color: #222222;
     font-size: 1rem;
     font-weight: bold; }
-  table thead {
+  table.auto-table thead {
     background: whitesmoke; }
-    table thead tr th,
-    table thead tr td {
+    table.auto-table thead tr th,
+    table.auto-table thead tr td {
       padding: 0.5rem 0.625rem 0.625rem;
       font-size: 0.875rem;
       font-weight: bold;
       color: #222222; }
-  table tfoot {
+  table.auto-table tfoot {
     background: whitesmoke; }
-    table tfoot tr th,
-    table tfoot tr td {
+    table.auto-table tfoot tr th,
+    table.auto-table tfoot tr td {
       padding: 0.5rem 0.625rem 0.625rem;
       font-size: 0.875rem;
       font-weight: bold;
       color: #222222; }
-  table tr th,
-  table tr td {
+  table.auto-table tr th,
+  table.auto-table tr td {
     padding: 0.5625rem 0.625rem;
     font-size: 0.875rem;
     color: #222222;
     text-align: left; }
-  table tr.even, table tr.alt, table tr:nth-of-type(even) {
+  table.auto-table tr.even, table.auto-table tr.alt, table.auto-table tr:nth-of-type(even) {
     background: #f9f9f9; }
-  table thead tr th,
-  table tfoot tr th,
-  table tfoot tr td,
-  table tbody tr th,
-  table tbody tr td,
-  table tr td {
-    display: table-cell;
+  table.auto-table thead tr th,
+  table.auto-table tfoot tr th,
+  table.auto-table tfoot tr td,
+  table.auto-table tbody tr th,
+  table.auto-table tbody tr td,
+  table.auto-table tr td {
+    display: table.auto-table-cell;
     line-height: 1.125rem; }
-  table td {
-    vertical-align: top;
+  table.auto-table td {
+    vertical-align: middle;
   }
 
 /* Tile accordion */
@@ -428,13 +428,29 @@ table {
 
 
 
+/* Layout da avaliação dos conteúdos */
 
+.rate-container {
+	position: absolute;
+    right: 0;
+}
 
+.rate-container .rate-line span,
+.rate-container .rate-line .rating { display: inline-block; }
 
+.rate-container .rate-line span { 
+	min-width: 110px;
+	text-align: right;
+}
 
+.rate-container .rate-line .rating {
+	font-size: 9px;
+	margin-left: 5px;
+	text-shadow: 2px 2px 1px #D8D8D8;
+}
 
-
-
+.rate-container .rate-line .rating.rating-geral { color: #FFD700; }
+.rate-container .rate-line .rating.my-rating { color: #1E90FF; }
 
 
 

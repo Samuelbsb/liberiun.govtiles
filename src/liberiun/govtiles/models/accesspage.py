@@ -70,5 +70,4 @@ class AccessPage(Storm, BaseStore):
         data = self.getAccessObjByUid(uid)
         if data: 
             return data.amount_of_access
-        
         return None

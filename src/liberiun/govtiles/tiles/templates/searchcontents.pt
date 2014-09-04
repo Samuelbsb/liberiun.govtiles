@@ -158,7 +158,7 @@ i18n:domain="liberiun.govtile">
                                            replace="structure python:govtilesbatchview(batch, show_page_range=True, ajaxcontentid=id_ajax)"></tal:govtilesbatchview>
                                            
                     <div class="table-box">
-                        <table>
+                        <table class="auto-table">
                             <thead>
                                 <tr>
                                     <th tal:condition="is_file" width="62">Formato</th>

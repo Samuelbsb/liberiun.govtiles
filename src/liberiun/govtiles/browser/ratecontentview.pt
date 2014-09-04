@@ -5,26 +5,24 @@
                              qtd_rate view/qtd_rate|nothing"
                              
                        metal:define-macro="ratecontent">
-    <link rel="stylesheet" tal:attributes="href string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/css/jquery.raty.css" href="jquery.raty.css" />
-    <script tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/jquery.raty.js" src="jquery.raty.js"></script>
-    <script tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/contentrating.js" src="jquery.raty.js"></script>
-    
     <div class="rate-container">
+        <link rel="stylesheet" tal:attributes="href string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/css/jquery.raty.css" href="jquery.raty.css" />
+        <script tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/jquery.raty.js" src="jquery.raty.js"></script>
+        <script tal:attributes="src string:${context/absolute_url|nothing}/++resource++liberiun.govtiles/js/contentrating.js" src="jquery.raty.js"></script>
         
-        <p>
-            Avaliação geral (<span tal:replace="qtd_rate"></span>): 
+        <div class="rate-line">        
+            <span>Avaliação geral (<span tal:replace="qtd_rate"></span>):</span> 
             <div class="rating rating-geral" tal:attributes="data-rating content_avg;">
             </div>
-        </p>
+        </div>
         
-        <p tal:condition="not:is_anonymous">
-            
-            Sua avaliação: 
+        <div class="rate-line" tal:condition="not:is_anonymous">
+            <span>Sua avaliação:</span> 
             <div class="rating my-rating" 
                  tal:attributes="data-rating my_rate;
                                  data-url string:${context/absolute_url};">
             </div>
-        </p>
+        </div>
         
     </div>
 </tal:ratecontentview>

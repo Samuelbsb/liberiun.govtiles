@@ -1,0 +1,84 @@
+<!-- Coment Content Macro -->
+<tal:commentmacro define="view nocall:context/@@comment-content-macro;
+                          load_view view/load_view;
+                          data view/getDataReplies|nothing;
+                          qtd_replies data/qtd_replies|nothing;
+                          qtd_pending data/qtd_pending|nothing;
+                          replies data/data|nothing;
+                          is_anonymous view/is_anonymous|nothing;
+                          id_ajax string:comment-content;"
+                  metal:define-macro="commentmacro">
+                       
+    <div class="comment-container"
+         tal:attributes="ajax-content id_ajax;">
+        
+        <div class="container-form"
+             tal:define="base_url view/url">
+             
+            <form action="" class="form-new-comment use-ajax">
+                <div class="field">
+                    <div><label>Nome</label></div>
+                    <div><input type="text" name="nome" /></div>
+                </div>
+                
+                <div class="field">
+                    <div><label>Email</label></div>
+                    <div><input type="text" name="email" /></div>
+                </div>
+                
+                <div class="field">
+                    <div><label>Comentário</label></div>
+                    <div>
+                        <textarea name="text"></textarea>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <input type="submit" 
+                           name="save" 
+                           value="Comentar" 
+                           class="btn btn-default"
+                           tal:attributes="ajax-url base_url;
+                                           ajax-id id_ajax;
+                                           ajax-filter id_ajax;" />
+                </div>
+            </form>
+            
+        </div>
+        
+        <div class="replies-container">
+
+            <div class="clearfix">
+                <div class="left">
+                    <h3>
+                    <span tal:content="qtd_replies"></span> 
+                    Comentário<span tal:condition="python:qtd_replies != 1" tal:replace="string:s"></span>
+                    </h3>
+                </div>
+                
+                <div class="right">
+                    <a class="btn btn-default" tal:attributes="href string: ${context/absolute_url}/manage-comments-view" 
+                       tal:content="python: '(%s) Comentário%s Pendentes' % (qtd_pending, (qtd_pending != 1) and 's' or '')"></a>
+                </div>
+            </div>
+            
+            <div class="replies">
+                
+                <tal:rep repeat="reply replies">
+                    <div class="reply-content">
+                        
+                        <div class="info">
+                            <strong tal:content="reply/name"></strong> | <span>Postado em <span tal:replace="reply/created"></span></span>
+                        </div>
+                        
+                        <div class="text-value">
+                            <p tal:content="structure reply/text">
+                            </p>
+                        </div>
+                        
+                    </div>
+                </tal:rep>
+            </div>
+        </div>
+    </div>
+</tal:commentmacro>

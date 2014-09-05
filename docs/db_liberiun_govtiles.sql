@@ -62,3 +62,25 @@ CREATE TABLE `lib_govtiles_ratecontent` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `my_db_name`.`lib_govtiles_commentcontent`
+--
+
+DROP TABLE IF EXISTS `my_db_name`.`lib_govtiles_commentcontent`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `my_db_name`.`lib_govtiles_commentcontent` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `deleted` TINYINT(1) NULL,
+  `date_created` DATETIME NULL,
+  `date_modified` DATETIME NULL,
+  `date_excluded` DATETIME NULL,
+  `uid` VARCHAR(100) NULL,
+  `username` VARCHAR(100) NULL,
+  `text` TEXT NULL,
+  `status` VARCHAR(100) NULL,
+  `date_status` DATETIME NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+/*!40101 SET character_set_client = @saved_cs_client */;

@@ -1,4 +1,4 @@
-<!-- Navigation -->
+<!-- Rate Contente -->
 <tal:ratecontentview define="my_rate view/my_rate|nothing;
                              is_anonymous view/is_anonymous|nothing;
                              content_avg view/content_avg|nothing;

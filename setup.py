@@ -49,6 +49,7 @@ setup(name='liberiun.govtiles',
         'sc.social.like',
         'storm',
         'MySQL-python',
+        'enum34',
         ],
     extras_require={
         'test': [

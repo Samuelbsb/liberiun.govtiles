@@ -453,7 +453,49 @@ table.auto-table {
 .rate-container .rate-line .rating.my-rating { color: #1E90FF; }
 
 
+/* Layout dos comentário  */
 
+
+.form-new-comment textarea {
+	height: 100px;
+}
+
+.comment-container {
+	margin-top: 20px;
+}
+
+.comment-container .replies-container {
+	margin-top: 30px;
+	padding-top: 10px;
+	border-top: 1px solid;
+}
+
+.reply-content {
+    border-bottom: 1px solid;
+    padding: 10px;
+}
+
+.reply-content .info{
+    margin-bottom: 10px;
+}
+
+.replies-container .reply-content {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.replies-container .btn {
+	border-bottom: 0.1em solid #ccc !important;
+	color: #333333 !important;
+}
+
+.reply-content .status-aprovado {
+    color: rgb(0, 211, 0);
+}
+
+.reply-content .status-reprovado {
+    color: red;
+}
 
 
 

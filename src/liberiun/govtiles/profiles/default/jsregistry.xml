@@ -7,6 +7,14 @@
   <javascript id="++resource++liberiun.govtiles/js/easy_ajax.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
       expression="" inline="False" authenticated="False" insert-after="*" />
+  
+  <javascript id="++resource++liberiun.govtiles/js/easy_tabs.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="False" insert-after="*" />
+      
+  <javascript id="++resource++liberiun.govtiles/js/checkall.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="False" insert-after="*" />   
       
   <javascript id="++resource++liberiun.govtiles/js/pagedcarousel.js"
       cacheable="True" compression="none" cookable="True" enabled="True"

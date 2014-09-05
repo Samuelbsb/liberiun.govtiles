@@ -8,10 +8,10 @@ $(document).ready(function () {
             ajax_id = $this.attr('ajax-id'),
             ajax_filter = $this.attr('ajax-filter'),
             ajax_evaljs = $this.attr('ajax-evaljs'),
+            $form = $(this).parents('form.use-ajax'),
             params = '';
         
-        if(this.tagName == 'INPUT') {
-        	var $form = $(this).parents('form.use-ajax');
+        if($form) {
         	params = $form.serialize();
         	if(params){
         		params += '&'+this.name+'='+this.value;
@@ -31,7 +31,7 @@ $(document).ready(function () {
                     		var dom = $(data);
 						}
                     	data = $('[ajax-content="'+ajax_filter+'"]', dom)
-                    	if (!data) {
+                    	if (!data || (data.length == 0)) {
                     		data = dom.filter('[ajax-content="'+ajax_filter+'"]')
                     	}
                         data = data.contents();

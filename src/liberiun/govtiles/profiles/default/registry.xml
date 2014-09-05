@@ -6,7 +6,7 @@
       <element>iframe</element>
       <element>listfoldercontents</element>
       <element>rssfeed</element>
-      <element>sharing</element>
+      <element>share</element>
       <element>bannerexterno</element>
     </value>
   </record>
@@ -19,7 +19,7 @@
 	  <element>iframe</element>
 	  <element>listfoldercontents</element>
 	  <element>rssfeed</element>
-	  <element>sharing</element>
+	  <element>share</element>
 	  <element>bannerexterno</element>
     </value>
   </record>

@@ -59,7 +59,7 @@
       />
       
   <plone:tile
-      name="sharing"
+      name="share"
       title="Compartilhamento"
       description="Tile com itens para compartilhamento"
       add_permission="cmf.ModifyPortalContent"

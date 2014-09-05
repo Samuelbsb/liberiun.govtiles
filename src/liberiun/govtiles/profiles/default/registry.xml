@@ -8,6 +8,9 @@
       <element>rssfeed</element>
       <element>share</element>
       <element>bannerexterno</element>
+      <element>pagedcarousel</element>
+      <element>searchcontents</element>
+      <element>moresearchterms</element>
     </value>
   </record>
   
@@ -21,6 +24,9 @@
 	  <element>rssfeed</element>
 	  <element>share</element>
 	  <element>bannerexterno</element>
+	  <element>pagedcarousel</element>
+	  <element>searchcontents</element>
+	  <element>moresearchterms</element>
     </value>
   </record>
   

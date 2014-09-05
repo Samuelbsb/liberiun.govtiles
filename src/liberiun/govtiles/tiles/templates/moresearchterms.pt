@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:metal="http://xml.zope.org/namespaces/metal"
+xmlns:tal="http://xml.zope.org/namespaces/tal"
+xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+i18n:domain="liberiun.govtile">
+
+<body tal:define="data view/get_dados;
+                  title data/title;
+                  htmltag data/title_htmltag;
+                  results data/list|nothing;">
+  
+    <div class="tile-moresearchterms">
+        
+        <div class="tile azul-claro ui-droppable">
+            <div class="outstanding-header">
+                <tal:rep replace="structure string:<${htmltag} class='outstanding-title'>"></tal:rep>
+                <span tal:replace="title">Mais Acessados</span>
+                <tal:rep replace="structure string:</h2>"></tal:rep>
+            </div>
+        </div>
+        
+        <div tal:condition="results">
+            <p>
+                <tal:rep repeat="item results">
+                    <span tal:content="item"></span><tal:cond condition="not:repeat/item/end">,</tal:cond>
+                </tal:rep>
+            </p> 
+        </div>
+        
+    </div>
+</body>
+</html>

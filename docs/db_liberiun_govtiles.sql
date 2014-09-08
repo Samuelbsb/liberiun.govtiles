@@ -1,14 +1,9 @@
---Estrutura de tabelas para o Gov Tiles
-
-
 --
--- Table structure for table `my_db_name`.`lib_govtiles_accesspage`
+-- Table structure for table `liberiun_govtiles_DB`.`lib_govtiles_accesspage`
 --
 
-DROP TABLE IF EXISTS `my_db_name`.`lib_govtiles_accesspage`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lib_govtiles_accesspage` (
+DROP TABLE IF EXISTS `liberiun_govtiles_DB`.`lib_govtiles_accesspage`;
+CREATE TABLE `liberiun_govtiles_DB`.`lib_govtiles_accesspage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
@@ -20,16 +15,13 @@ CREATE TABLE `lib_govtiles_accesspage` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `my_db_name`.`lib_govtiles_searchterms`
+-- Table structure for table `liberiun_govtiles_DB`.`lib_govtiles_searchterms`
 --
 
-DROP TABLE IF EXISTS `my_db_name`.`lib_govtiles_searchterms`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lib_govtiles_searchterms` (
+DROP TABLE IF EXISTS `liberiun_govtiles_DB`.`lib_govtiles_searchterms`;
+CREATE TABLE `liberiun_govtiles_DB`.`lib_govtiles_searchterms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
@@ -41,16 +33,13 @@ CREATE TABLE `lib_govtiles_searchterms` (
   `amount_of_search` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `my_db_name`.`lib_govtiles_ratecontent`
+-- Table structure for table `liberiun_govtiles_DB`.`lib_govtiles_ratecontent`
 --
 
-DROP TABLE IF EXISTS `my_db_name`.`lib_govtiles_ratecontent`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lib_govtiles_ratecontent` (
+DROP TABLE IF EXISTS `liberiun_govtiles_DB`.`lib_govtiles_ratecontent`;
+CREATE TABLE `liberiun_govtiles_DB`.`lib_govtiles_ratecontent` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
@@ -61,16 +50,13 @@ CREATE TABLE `lib_govtiles_ratecontent` (
   `rate` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `my_db_name`.`lib_govtiles_commentcontent`
+-- Table structure for table `liberiun_govtiles_DB`.`lib_govtiles_commentcontent`
 --
 
-DROP TABLE IF EXISTS `my_db_name`.`lib_govtiles_commentcontent`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `my_db_name`.`lib_govtiles_commentcontent` (
+DROP TABLE IF EXISTS `liberiun_govtiles_DB`.`lib_govtiles_commentcontent`;
+CREATE TABLE IF NOT EXISTS `liberiun_govtiles_DB`.`lib_govtiles_commentcontent` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `deleted` TINYINT(1) NULL,
   `date_created` DATETIME NULL,
@@ -83,4 +69,3 @@ CREATE TABLE IF NOT EXISTS `my_db_name`.`lib_govtiles_commentcontent` (
   `date_status` DATETIME NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-/*!40101 SET character_set_client = @saved_cs_client */;

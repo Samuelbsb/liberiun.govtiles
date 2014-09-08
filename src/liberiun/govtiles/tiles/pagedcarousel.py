@@ -109,8 +109,8 @@ class PagedCarouselTile(PersistentCoverTile):
         
         if uuids:
             for uuid in uuids:
-                brains.append(uuidToCatalogBrain(uuid))
-            
+                if uuidToCatalogBrain(uuid):
+                    brains.append(uuidToCatalogBrain(uuid))
         return brains
     
     def get_childrens_brain_by_type(self, brain, content_type):

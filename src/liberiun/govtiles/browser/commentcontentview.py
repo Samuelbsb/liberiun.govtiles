@@ -2,6 +2,7 @@
 from zope.interface import Interface
 from five import grok
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope.security import checkPermission
 
 from liberiun.govtiles.models.commentcontent import CommentContent, Status
 
@@ -117,9 +118,12 @@ class CommentContentMacro(grok.View):
     def datetimeToString(self, dt):
         return dt.strftime('%d/%m/%y, %H:%M')
     
+    def canManageComments(self):
+        return checkPermission('cmf.RequestReview', self.context)
+    
 class ManageCommentsView(CommentContentMacro):
     grok.context(Interface)
-    grok.require('zope2.View')
+    grok.require('cmf.RequestReview')
     grok.name('manage-comments-view')
     """
     

@@ -11,6 +11,8 @@
   <include package=".tiles" />
   <include package=".browser" />
   
+  <include package="storm.zope"/>
+  <include package="storm.zope" file="meta.zcml"/>
   <include file="storm.zcml" />
     
   <include package="five.grok" />

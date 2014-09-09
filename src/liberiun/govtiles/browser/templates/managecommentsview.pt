@@ -80,18 +80,26 @@
                                                 </td>
                                                 
                                                 <td class="reply-content">
-                                                    <div tal:define="username reply/name;
-                                                                     author_home_url python:view.get_commenter_home_url(username=username);">
+                                                    <div tal:define="name reply/name;
+                                                                     email reply/email;
+                                                                     user_url reply/user_url;">
                                                         <div class="info">
                                                             <tal:name>
                                                                 <strong>
-                                                                    <a href=""
-                                                                       tal:condition="username"
-                                                                       tal:content="username"
-                                                                       tal:attributes="href author_home_url">
-                                                                        Poster Name
-                                                                    </a>
-                                                                </strong> 
+                                                                    <tal:cond condition="user_url">
+                                                                        <a href=""
+                                                                           tal:content="name|email|username|nothing"
+                                                                           tal:attributes="href user_url">
+                                                                            Poster Name
+                                                                        </a>
+                                                                    </tal:cond>
+                                                                    
+                                                                    <tal:cond condition="not:user_url">
+                                                                        <span tal:content="name|email|username|nothing">
+                                                                            Poster Name
+                                                                        </span>
+                                                                    </tal:cond>
+                                                                </strong>  
                                                                 | <span>Postado em <span tal:replace="reply/created"></span></span>
                                                             </tal:name>
                                                         </div>
@@ -125,17 +133,25 @@
                                                
                             <div class="container-replies">
                                 <tal:getreplies repeat="reply batch">
-                                    <div class="reply-content" tal:define="username reply/name;
-                                                                           author_home_url python:view.get_commenter_home_url(username=username);">
+                                    <div class="reply-content" tal:define="name reply/name;
+                                                                           email reply/email;
+                                                                           user_url reply/user_url;">
                                         <div class="info">
                                             <tal:name>
                                                 <strong>
-                                                    <a href=""
-                                                       tal:condition="username"
-                                                       tal:content="username"
-                                                       tal:attributes="href author_home_url">
-                                                        Poster Name
-                                                    </a>
+                                                    <tal:cond condition="user_url">
+                                                        <a href=""
+                                                           tal:content="name|email|username|nothing"
+                                                           tal:attributes="href user_url">
+                                                            Poster Name
+                                                        </a>
+                                                    </tal:cond>
+                                                    
+                                                    <tal:cond condition="not:user_url">
+                                                        <span tal:content="name|email|username|nothing">
+                                                            Poster Name
+                                                        </span>
+                                                    </tal:cond>
                                                 </strong> 
                                                 | <span>Postado em <span tal:replace="reply/created"></span></span>
                                                 | <span tal:content="python: view.getLabelStatus(reply)" 

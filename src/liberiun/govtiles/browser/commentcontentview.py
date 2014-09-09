@@ -26,10 +26,15 @@ class CommentContentMacro(grok.View):
     """
     
     def load_view(self):
-        self.have_manage = True
-        self.is_anonymous = False
         self.p_membership = self.context.portal_membership
         form = self.request.form
+        self.user_logged = self.p_membership.getAuthenticatedMember()
+        
+        if self.user_logged.getUserName() ==  'Anonymous User':
+            self.is_anonymous = True
+        else:
+            self.is_anonymous = False
+            self.member = self.user_logged
         
         if form.get('save'):
             self.insertNewComment(form)
@@ -43,11 +48,20 @@ class CommentContentMacro(grok.View):
             @return: Registro criado no BD
         """
         
-        data = {'uid': self.context.UID(),
-                'username': self.p_membership.getAuthenticatedMember().getUserName(),
-                'text': form.get('text', ''),
-                }
+        if self.user_logged.getUserName() == 'Anonymous User':
+            name = form.get('name')
+            email = form.get('email')
+        else:
+            name = self.user_logged.getProperty('fullname')
+            email = self.user_logged.getProperty('email')
+            
+        username = self.user_logged.getUserName()
         
+        data = {'uid': self.context.UID(),
+                'name': name,
+                'email': email,
+                'username': username,
+                'text': form.get('text', ''),}
         comment = CommentContent().newCommentContent(**data)
         
         return comment
@@ -104,7 +118,9 @@ class CommentContentMacro(grok.View):
         '''
         
         data_object =  {
-            'name': reg.username,
+            'name': reg.name,
+            'email': reg.email,
+            'user_url': self.getCommenterHomeUrl(reg.username),
             'created': self.datetimeToString(reg.date_created),
             'text': reg.text,
             'id': reg.id,
@@ -112,9 +128,14 @@ class CommentContentMacro(grok.View):
             'date_status': reg.date_status,
             'class_status': 'status-'+Status(reg.status).name,
         }
-        
         return data_object
     
+    def getCommenterHomeUrl(self, username=None):
+        if username is None or username == 'Anonymous User':
+            return False
+        else:
+            return "%s/author/%s" % (self.context.portal_url(), username)
+        
     def datetimeToString(self, dt):
         return dt.strftime('%d/%m/%y, %H:%M')
     
@@ -160,12 +181,6 @@ class ManageCommentsView(CommentContentMacro):
         CommentContent().changeStatus(ids, status)
         
     
-    def get_commenter_home_url(self, username=None):
-        if username is None:
-            return None
-        else:
-            return "%s/author/%s" % (self.context.portal_url(), username)
-        
     def getHistoryReplies(self):
         """
             Método retorna um dicionario com as respostas aprovadas pelo gestor

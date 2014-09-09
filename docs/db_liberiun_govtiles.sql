@@ -64,8 +64,10 @@ CREATE TABLE IF NOT EXISTS `liberiun_govtiles_DB`.`lib_govtiles_commentcontent` 
   `date_excluded` DATETIME NULL,
   `uid` VARCHAR(100) NULL,
   `username` VARCHAR(100) NULL,
+  `name` VARCHAR(100) NULL,
+  `email` VARCHAR(100) NULL,
   `text` TEXT NULL,
-  `status` VARCHAR(100) NULL,
+  `status` INT NULL,
   `date_status` DATETIME NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB

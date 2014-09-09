@@ -6,7 +6,8 @@
                           qtd_pending data/qtd_pending|nothing;
                           replies data/data|nothing;
                           is_anonymous view/is_anonymous|nothing;
-                          id_ajax string:comment-content;"
+                          id_ajax string:comment-content;
+                          member view/member|nothing"
                   metal:define-macro="commentmacro">
                        
     <div class="comment-container"
@@ -18,12 +19,19 @@
             <form action="" class="form-new-comment use-ajax">
                 <div class="field">
                     <div><label>Nome</label></div>
-                    <div><input type="text" name="nome" /></div>
+                    <div>
+                        <input type="text" name="name" tal:condition="is_anonymous" />
+                        <input type="text" name="name" tal:condition="not:is_anonymous" readonly="readonly"
+                               tal:attributes="value python:member and member.getProperty('fullname') or '';" />
+                    </div>
                 </div>
                 
                 <div class="field">
                     <div><label>Email</label></div>
-                    <div><input type="text" name="email" /></div>
+                    <div>
+                        <input type="text" name="email" tal:condition="is_anonymous" />
+                        <input type="text" name="email" tal:condition="not:is_anonymous" readonly="readonly"
+                               tal:attributes="value python:member and member.getProperty('email') or '';" />
                 </div>
                 
                 <div class="field">

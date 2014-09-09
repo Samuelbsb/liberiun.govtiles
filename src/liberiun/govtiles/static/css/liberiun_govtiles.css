@@ -412,7 +412,7 @@ table.auto-table {
     }
     
     
-    .container-search .container-filter .top-filter span {
+    .container-search .container-filter .top-filter > span {
         font-size: 14px;
         margin-top: 5px;
         display: block;

@@ -31,8 +31,8 @@ i18n:domain="liberiun.govtile">
                 
                 <form action="" method="GET" class="form-filter use-ajax">
                     <div class="top-filter clearfix">
-                        <div class="left">
-                            <span>- Refinar Busca</span>
+                        <div class="left call-advanced-search">
+                            <span><span class="sign">+</span> Refinar Busca</span>
                         </div>
                         
                         <div class="right">
@@ -40,7 +40,7 @@ i18n:domain="liberiun.govtile">
                         </div>
                     </div>
                     
-                    <div class="mid-filter clearfix">
+                    <div class="mid-filter clearfix advanced-search" style="display: none;">
                         
                         <div class="cell width-5 position-0">
                             <div tal:condition="is_pratica">

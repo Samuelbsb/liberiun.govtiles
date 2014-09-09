@@ -20,6 +20,8 @@ class CommentContent(Storm, BaseStore):
     
     uid = Unicode()
     username = Unicode()
+    name = Unicode()
+    email = Unicode()
     text = Unicode()
     status = Int() #Pendente, Aprovado, Reprovado
     date_status = DateTime()
@@ -31,20 +33,28 @@ class CommentContent(Storm, BaseStore):
             @param **kwargs: dicionario de dados contendo - uid - UID do objeto
                                                             username - username de quem comentou
                                                             text - texto comentado no objeto
+                                                            name - nome completo do comentador
+                                                            email - email do comentador
             @return: registro novo cadastrado
         """
         
         uid = kwargs.get('uid', '')
         text = kwargs.get('text', '')
         username = kwargs.get('username', '')
+        name = kwargs.get('name', '')
+        email = kwargs.get('email', '')
         
-        if uid and username:
+        if uid and username and name and email:
             uid = self.convertToUTF(uid)
             text = self.convertToUTF(text)
             username = self.convertToUTF(username)
+            name = self.convertToUTF(name)
+            email = self.convertToUTF(email)
             
             D={'uid': uid,
                'username': username,
+               'name': name,
+               'email': email,
                'text': text,
                'status': Status.pendente.value,
                'date_status': datetime.now()}
@@ -169,7 +179,10 @@ class CommentContent(Storm, BaseStore):
                                CommentContent.deleted == False)
         
         for item in data:
-            item.status = status.value
+            if item.status != status.value:
+                item.status = status.value
+                item.date_status = datetime.now()
+            
         self.store.flush()
         
     def getNameStatus(self):

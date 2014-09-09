@@ -18,5 +18,9 @@
       
   <javascript id="++resource++liberiun.govtiles/js/pagedcarousel.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
-      expression="context/@@pagedcarousel" inline="False" authenticated="False" insert-after="*" />   
+      expression="context/@@pagedcarousel" inline="False" authenticated="False" insert-after="*" />
+  
+  <javascript id="++resource++liberiun.govtiles/js/searchcontents.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="context/@@searchcontents" inline="False" authenticated="False" insert-after="*" />      
 </object>

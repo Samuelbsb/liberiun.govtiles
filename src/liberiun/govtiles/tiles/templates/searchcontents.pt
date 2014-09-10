@@ -13,181 +13,183 @@ i18n:domain="liberiun.govtile">
                   is_file python: portal_type_selected == 'File' and True or False;
                   is_pratica not: is_file;
                   uuid view/id">
-  
-    <div class="tile-searchcontents">
-        
-        <div class="tile tile-default">
-            <div class="outstanding-header">
-                <tal:rep replace="structure string:<${htmltag} class='outstanding-title'>"></tal:rep>
-                <span tal:replace="title">Mais Acessados</span>
-                <tal:rep replace="structure string:</h2>"></tal:rep>
-            </div>
-        </div>
-
-        <div class="container-search"
-             tal:define="id_ajax string:results-${uuid};">
+    
+    <div class="tile-content">
+        <div class="tile-searchcontents">
             
-            <div class="container-filter">
+            <div class="tile tile-default">
+                <div class="outstanding-header">
+                    <tal:rep replace="structure string:<${htmltag} class='outstanding-title'>"></tal:rep>
+                    <span tal:replace="title">Mais Acessados</span>
+                    <tal:rep replace="structure string:</h2>"></tal:rep>
+                </div>
+            </div>
+    
+            <div class="container-search"
+                 tal:define="id_ajax string:results-${uuid};">
                 
-                <form action="" method="GET" class="form-filter use-ajax">
-                    <div class="top-filter clearfix">
-                        <div class="left call-advanced-search">
-                            <span><span class="sign">+</span> Refinar Busca</span>
-                        </div>
-                        
-                        <div class="right">
-                            <input type="text" value="" name="SearchableText" placeholder="Palavra-chave"/>
-                        </div>
-                    </div>
+                <div class="container-filter">
                     
-                    <div class="mid-filter clearfix advanced-search" style="display: none;">
-                        
-                        <div class="cell width-5 position-0">
-                            <div tal:condition="is_pratica">
-                                <div>
-                                    <label>Orgão Responsável</label>
-                                </div>
-                                <div>
-                                    <select name="orgaoresponsavel">
-                                        <option value="">Todos</option>
-                                        <tal:rep repeat="item data/all_orgaoresponsavel" tal:condition="data/all_orgaoresponsavel|nothing">
-                                            <option tal:content="item" tal:attributes="value item;"></option>
-                                        </tal:rep>
-                                    </select>
-                                </div>
-                            </div>
-                            <div tal:condition="is_file">
-                                <div>
-                                    <label>Tipo</label>
-                                </div>
-                                <div>
-                                    <select>
-                                        <option>Todos</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <div>
-                                    <label>Tag</label>
-                                </div>
-                                <div>
-                                    <select name="Subject">
-                                        <option value="">Todos</option>
-                                        <tal:rep repeat="item all_subjects">
-                                            <option tal:content="item" tal:attributes="value item;"></option>
-                                        </tal:rep>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="cell width-5 position-5">
-                            <div tal:condition="is_file">
-                                <div>
-                                    <label>Formato</label>
-                                </div>
-                                <div>
-                                    <select>
-                                        <option>Todos</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <div>
-                                    <label>Assunto</label>
-                                </div>
-                                <div>
-                                    <select>
-                                        <option>Todos</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="cell width-5 position-10">
-                            <div>
-                                <label>Data de Cadastro</label>
+                    <form action="" method="GET" class="form-filter use-ajax">
+                        <div class="top-filter clearfix">
+                            <div class="left call-advanced-search">
+                                <span><span class="sign">+</span> Refinar Busca</span>
                             </div>
                             
-                            <div class="dates-box clearfix">
-                                
-                                <div class="left">
+                            <div class="right">
+                                <input type="text" value="" name="SearchableText" placeholder="Palavra-chave"/>
+                            </div>
+                        </div>
+                        
+                        <div class="mid-filter clearfix advanced-search" style="display: none;">
+                            
+                            <div class="cell width-5 position-0">
+                                <div tal:condition="is_pratica">
                                     <div>
-                                        <label>inicio</label>
+                                        <label>Orgão Responsável</label>
                                     </div>
                                     <div>
-                                        <input type="date" name="date-created-start">
+                                        <select name="orgaoresponsavel">
+                                            <option value="">Todos</option>
+                                            <tal:rep repeat="item data/all_orgaoresponsavel" tal:condition="data/all_orgaoresponsavel|nothing">
+                                                <option tal:content="item" tal:attributes="value item;"></option>
+                                            </tal:rep>
+                                        </select>
                                     </div>
                                 </div>
-                                
-                                <div class="left">
+                                <div tal:condition="is_file">
                                     <div>
-                                        <label>término</label>
+                                        <label>Tipo</label>
                                     </div>
                                     <div>
-                                    <input type="date" name="date-created-end">
+                                        <select>
+                                            <option>Todos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <label>Tag</label>
+                                    </div>
+                                    <div>
+                                        <select name="Subject">
+                                            <option value="">Todos</option>
+                                            <tal:rep repeat="item all_subjects">
+                                                <option tal:content="item" tal:attributes="value item;"></option>
+                                            </tal:rep>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cell width-5 position-5">
+                                <div tal:condition="is_file">
+                                    <div>
+                                        <label>Formato</label>
+                                    </div>
+                                    <div>
+                                        <select>
+                                            <option>Todos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <label>Assunto</label>
+                                    </div>
+                                    <div>
+                                        <select>
+                                            <option>Todos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cell width-5 position-10">
+                                <div>
+                                    <label>Data de Cadastro</label>
+                                </div>
+                                
+                                <div class="dates-box clearfix">
+                                    
+                                    <div class="left">
+                                        <div>
+                                            <label>inicio</label>
+                                        </div>
+                                        <div>
+                                            <input type="date" name="date-created-start">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="left">
+                                        <div>
+                                            <label>término</label>
+                                        </div>
+                                        <div>
+                                        <input type="date" name="date-created-end">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="bot-filter clearfix">
-                        <div class="buttons-box right">
-                            <input type="button" name="submitted" value="Buscar" 
-                                   tal:attributes="ajax-url view/url;
-                                                   ajax-id id_ajax;
-                                                   ajax-filter id_ajax;" />
+                        
+                        <div class="bot-filter clearfix">
+                            <div class="buttons-box right">
+                                <input type="button" name="submitted" value="Buscar" 
+                                       tal:attributes="ajax-url view/url;
+                                                       ajax-id id_ajax;
+                                                       ajax-filter id_ajax;" />
+                            </div>
                         </div>
-                    </div>
-                    
-                </form>
-            </div>
-            
-            <div class="container-results"
-                 tal:condition="results">
-                 
-                <div class="results-search" tal:attributes="ajax-content id_ajax;"
-                      tal:define="Batch python:modules['Products.CMFPlone'].Batch;
-                                  b_size request/b_size|python:10;
-                                  b_start python:0;
-                                  b_start request/b_start | b_start;
-                                  batch python:Batch(results, b_size, int(b_start));">
-                  
-                    <tal:govtilesbatchview define="govtilesbatchview nocall:context/@@govtilesbatchview;"
-                                           replace="structure python:govtilesbatchview(batch, show_page_range=True, ajaxcontentid=id_ajax)"></tal:govtilesbatchview>
-                                           
-                    <div class="table-box">
-                        <table class="auto-table">
-                            <thead>
-                                <tr>
-                                    <th tal:condition="is_file" width="62">Formato</th>
-                                    <th>Título</th>
-                                    <th tal:condition="is_file" width="100">Tipo</th>
-                                    <th tal:condition="is_pratica" width="200">Órgão Reponsável</th>
-                                    <th width="85">Data</th>
-                                    <th tal:condition="is_file" width="70">Tamanho</th>
-                                </tr>
-                            </thead>
-                            
-                            <tbody>
-                                
-                                <tal:rep repeat="item batch">
+                        
+                    </form>
+                </div>
+                
+                <div class="container-results"
+                     tal:condition="results">
+                     
+                    <div class="results-search" tal:attributes="ajax-content id_ajax;"
+                          tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                                      b_size request/b_size|python:10;
+                                      b_start python:0;
+                                      b_start request/b_start | b_start;
+                                      batch python:Batch(results, b_size, int(b_start));">
+                      
+                        <tal:govtilesbatchview define="govtilesbatchview nocall:context/@@govtilesbatchview;"
+                                               replace="structure python:govtilesbatchview(batch, show_page_range=True, ajaxcontentid=id_ajax)"></tal:govtilesbatchview>
+                                               
+                        <div class="table-box">
+                            <table class="auto-table">
+                                <thead>
                                     <tr>
-                                        <td tal:condition="is_file">
-                                            <div class="ico-filetype-area">
-                                                <span tal:content="item/content_type"></span>
-                                            </div>
-                                        </td>
-                                        <td><a tal:attributes="href item/url"><strong tal:content="item/title"></strong></a></td>
-                                        <td><span tal:content="item/generic_type"></span></td>
-                                        <td><span tal:content="item/created"></span></td>
-                                        <td tal:condition="is_file"><span tal:content="item/file_size"></span></td>
+                                        <th tal:condition="is_file" width="62">Formato</th>
+                                        <th>Título</th>
+                                        <th tal:condition="is_file" width="100">Tipo</th>
+                                        <th tal:condition="is_pratica" width="200">Órgão Reponsável</th>
+                                        <th width="85">Data</th>
+                                        <th tal:condition="is_file" width="70">Tamanho</th>
                                     </tr>
-                                </tal:rep>
-
-                            </tbody>
-                        </table>
+                                </thead>
+                                
+                                <tbody>
+                                    
+                                    <tal:rep repeat="item batch">
+                                        <tr>
+                                            <td tal:condition="is_file">
+                                                <div class="ico-filetype-area">
+                                                    <span tal:content="item/content_type"></span>
+                                                </div>
+                                            </td>
+                                            <td><a tal:attributes="href item/url"><strong tal:content="item/title"></strong></a></td>
+                                            <td><span tal:content="item/generic_type"></span></td>
+                                            <td><span tal:content="item/created"></span></td>
+                                            <td tal:condition="is_file"><span tal:content="item/file_size"></span></td>
+                                        </tr>
+                                    </tal:rep>
+    
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

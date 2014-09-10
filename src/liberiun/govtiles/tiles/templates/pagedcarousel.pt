@@ -16,53 +16,55 @@
                   results data/list|nothing;
                   uuid view/id">
                   
-    <div class="tile-pagedcarousel">
-        <div class="tile tile-default">
-            <div class="outstanding-header">
-                <tal:rep replace="structure string:<${htmltag} class='outstanding-title'>"></tal:rep>
-                    <span tal:replace="title">Mais Acessados</span>
-                <tal:rep replace="structure string:</h2>"></tal:rep>
+    <div class="tile-content">
+        <div class="tile-pagedcarousel">
+            <div class="tile tile-default">
+                <div class="outstanding-header">
+                    <tal:rep replace="structure string:<${htmltag} class='outstanding-title'>"></tal:rep>
+                        <span tal:replace="title">Mais Acessados</span>
+                    <tal:rep replace="structure string:</h2>"></tal:rep>
+                </div>
             </div>
-        </div>
-        
-        <div tal:attributes="ajax-content string:content-batch-${uuid}" >
-        
-            <div class="clearfix" tal:define="Batch python:modules['Products.CMFPlone'].Batch;
-                                              b_size python:3;
-                                              b_start python:0;
-                                              b_start request/b_start | b_start;
-                                              batch python:Batch(results, b_size, int(b_start));">
-                
-                <tal:govtilesbatchview define="govtilesbatchview nocall:context/@@govtilesbatchview;
-                                               ajaxid string:content-batch-${uuid}"
-                    replace="structure python:govtilesbatchview(batch, ajaxcontentid=ajaxid)" />
-        
-                <tal:rep tal:repeat="item batch">
-                    <div tal:attributes="class python:'cell width-5 position-%s' % (repeat['item'].index*5)" class="">
-                        <tal:def define="portal_type item/portal_type;">
-                            
-                            <p tal:content="item/generic_type">CARTILHA</p>
-                            
-                            <div class="title-item">
-                                <h4><a tal:attributes="href item/url|nothing" tal:content="item/title|nothing"></a></h4>
-                            </div>
-                            
-                            <div class="container-info">
-                                <div class="ico-filetype-area" tal:condition="python:portal_type == 'File'">
-                                    <span tal:content="item/content_type"></span>
+            
+            <div tal:attributes="ajax-content string:content-batch-${uuid}" >
+            
+                <div class="clearfix" tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                                                  b_size python:3;
+                                                  b_start python:0;
+                                                  b_start request/b_start | b_start;
+                                                  batch python:Batch(results, b_size, int(b_start));">
+                    
+                    <tal:govtilesbatchview define="govtilesbatchview nocall:context/@@govtilesbatchview;
+                                                   ajaxid string:content-batch-${uuid}"
+                        replace="structure python:govtilesbatchview(batch, ajaxcontentid=ajaxid)" />
+            
+                    <tal:rep tal:repeat="item batch">
+                        <div tal:attributes="class python:'cell width-5 position-%s' % (repeat['item'].index*5)" class="">
+                            <tal:def define="portal_type item/portal_type;">
+                                
+                                <p tal:content="item/generic_type">CARTILHA</p>
+                                
+                                <div class="title-item">
+                                    <h4><a tal:attributes="href item/url|nothing" tal:content="item/title|nothing"></a></h4>
                                 </div>
                                 
-                                <div class="info-item" tal:define="access item/access|nothing;">
-                                    <span>Adicionado em: <span tal:replace="item/created|nothing"></span></span>
-                                    <span>Acessos: <span tal:replace="python: (access) and access or '0'"></span></span>
-                                    <tal:cond condition="python:portal_type=='File'">
-                                        <span>Tamanho: <span tal:replace="item/file_size|nothing"></span></span>
-                                    </tal:cond>
+                                <div class="container-info">
+                                    <div class="ico-filetype-area" tal:condition="python:portal_type == 'File'">
+                                        <span tal:content="item/content_type"></span>
+                                    </div>
+                                    
+                                    <div class="info-item" tal:define="access item/access|nothing;">
+                                        <span>Adicionado em: <span tal:replace="item/created|nothing"></span></span>
+                                        <span>Acessos: <span tal:replace="python: (access) and access or '0'"></span></span>
+                                        <tal:cond condition="python:portal_type=='File'">
+                                            <span>Tamanho: <span tal:replace="item/file_size|nothing"></span></span>
+                                        </tal:cond>
+                                    </div>
                                 </div>
-                            </div>
-                        </tal:def>
-                    </div>
-                </tal:rep>
+                            </tal:def>
+                        </div>
+                    </tal:rep>
+                </div>
             </div>
         </div>
     </div>

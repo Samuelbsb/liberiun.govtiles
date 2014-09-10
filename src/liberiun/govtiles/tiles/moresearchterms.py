@@ -13,12 +13,6 @@ class IMoreSearchTermsTile(IPersistentCoverTile):
     """
     """
     
-    title = schema.TextLine(
-        title=_(u'Title'),
-        required=True,
-    )
-    
-
 class MoreSearchTermsTile(PersistentCoverTile):
     is_configurable = True
 
@@ -37,7 +31,5 @@ class MoreSearchTermsTile(PersistentCoverTile):
                 terms.append(term.value);
         
         return {
-            'title': self.data.get('title', None),
-            'title_htmltag': self.get_tile_configuration()['title']['htmltag'],
             'list': terms
         }

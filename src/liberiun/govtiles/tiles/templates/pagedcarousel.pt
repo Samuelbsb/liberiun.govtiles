@@ -11,21 +11,12 @@
 
 
 <body tal:define="data view/get_dados;
-                  title data/title;
-                  htmltag data/title_htmltag;
                   results data/list|nothing;
                   uuid view/id">
                   
     <div class="tile-content">
         <div class="tile-pagedcarousel">
-            <div class="tile tile-default">
-                <div class="outstanding-header">
-                    <tal:rep replace="structure string:<${htmltag} class='outstanding-title'>"></tal:rep>
-                        <span tal:replace="title">Mais Acessados</span>
-                    <tal:rep replace="structure string:</h2>"></tal:rep>
-                </div>
-            </div>
-            
+
             <div tal:attributes="ajax-content string:content-batch-${uuid}" >
             
                 <div class="clearfix" tal:define="Batch python:modules['Products.CMFPlone'].Batch;

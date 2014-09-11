@@ -5,17 +5,19 @@ xmlns:i18n="http://xml.zope.org/namespaces/i18n"
 i18n:domain="liberiun.govtile">
 
 <body tal:define="data view/get_dados;
-                  title data/title;
-                  htmltag data/title_htmltag;
                   results data/list|nothing;">
   
     <div class="tile-content">
         <div class="tile-moresearchterms">
             <div tal:condition="results">
                 <p>
-                    <tal:rep repeat="item results">
-                        <span tal:content="item"></span><tal:cond condition="not:repeat/item/end">,</tal:cond>
-                    </tal:rep>
+                <tal:rep repeat="item results">
+                    <a tal:content="item/value" 
+                       tal:attributes="href item/url;
+                                       ajax-url item/url;
+                                       ajax-id item/ajax_id;
+                                       ajax-filter item/ajax_id;"></a><tal:cond condition="not:repeat/item/end">,</tal:cond>
+                </tal:rep>
                 </p> 
             </div>
         </div>

@@ -337,8 +337,8 @@ table.auto-table {
 
 .tile-pagedcarousel .navigation-govtiles {
 	position: absolute;
-	top: 11px;
-	right: 0;
+	top: -15px;
+	right: 0px;
 }
 
 .ico-filetype-area {

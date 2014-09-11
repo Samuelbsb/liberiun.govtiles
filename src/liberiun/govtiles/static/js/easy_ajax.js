@@ -44,6 +44,9 @@ $(document).ready(function () {
                     }
                     
                     $container_ajax.html(data);
+                    if ($('table.tablesorter')) {
+                    	$('table.tablesorter').tablesorter();
+                    }
                 }
             });
         }

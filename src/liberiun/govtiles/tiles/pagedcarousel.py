@@ -38,11 +38,6 @@ class IPagedCarouselTile(IPersistentCoverTile):
     """
     """
     
-    title = schema.TextLine(
-        title=_(u'Title'),
-        required=True,
-    )
-    
     type_display = schema.Choice(
         title=_(u'Critério de exibição'),
         vocabulary=types_display,
@@ -142,10 +137,8 @@ class PagedCarouselTile(PersistentCoverTile):
             
         
         return {
-            'title': self.data.get('title', None),
             'type_display': type_display,
             'content_type': content_type,
-            'title_htmltag': self.get_tile_configuration()['title']['htmltag'],
             'list': [self._brain_for_dict(brain) for brain in brains if brain]
         }
         

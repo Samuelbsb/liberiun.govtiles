@@ -32,11 +32,6 @@ class ISearchContentsTile(IPersistentCoverTile):
     """
     """
     
-    title = schema.TextLine(
-        title=_(u'Title'),
-        required=True,
-    )
-    
     portal_type_selected = schema.Choice(
         title=_(u'Tipo de conteúdo'),
         vocabulary=portal_types,
@@ -53,7 +48,7 @@ class SearchContentsTile(PersistentCoverTile):
     def get_dados(self):
         """ Obtem os dados que serão usados no template
         """
-
+        
         portal_type_selected = self.data.get('portal_type_selected', None)
         all_subjects = self.portal_catalog.uniqueValuesFor('Subject')
         brains = []
@@ -106,14 +101,11 @@ class SearchContentsTile(PersistentCoverTile):
                                 value = form[field].decode('utf-8')
                         
                         query[field] = value
-            
             brains = self.portal_catalog(query)
         
         
         results = {
-            'title': self.data.get('title', None),
             'portal_type_selected': portal_type_selected,
-            'title_htmltag': self.get_tile_configuration()['title']['htmltag'],
             'list': [self._brain_for_dict(brain) for brain in brains if brain],
             'all_subjects': all_subjects,
         }

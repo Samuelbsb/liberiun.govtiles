@@ -32,6 +32,7 @@
                         <input type="text" name="email" tal:condition="is_anonymous" />
                         <input type="text" name="email" tal:condition="not:is_anonymous" readonly="readonly"
                                tal:attributes="value python:member and member.getProperty('email') or '';" />
+                   </div>
                 </div>
                 
                 <div class="field">

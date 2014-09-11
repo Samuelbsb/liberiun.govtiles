@@ -1,4 +1,5 @@
 $(function() {
+	
 	$(document).on('click', '.call-advanced-search', function(ev){
 		var $this = $(this),
 		    $form = $this.parents('form.form-filter');

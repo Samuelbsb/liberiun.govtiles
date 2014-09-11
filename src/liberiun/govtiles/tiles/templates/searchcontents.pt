@@ -4,9 +4,16 @@ xmlns:tal="http://xml.zope.org/namespaces/tal"
 xmlns:i18n="http://xml.zope.org/namespaces/i18n"
 i18n:domain="liberiun.govtile">
 
+<head>
+  <link rel="stylesheet" type="text/css"
+      tal:attributes="href string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/css/tablesorter.css" />
+      
+  <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/jquery.metadata.js"></script>
+  <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/jquery.tablesorter.js"></script>
+  <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/tablesorter.js"></script>
+</head>
+
 <body tal:define="data view/get_dados;
-                  title data/title;
-                  htmltag data/title_htmltag;
                   results data/list|nothing;
                   all_subjects data/all_subjects|nothing;
                   portal_type_selected data/portal_type_selected|nothing;
@@ -16,15 +23,7 @@ i18n:domain="liberiun.govtile">
     
     <div class="tile-content">
         <div class="tile-searchcontents">
-            
-            <div class="tile tile-default">
-                <div class="outstanding-header">
-                    <tal:rep replace="structure string:<${htmltag} class='outstanding-title'>"></tal:rep>
-                    <span tal:replace="title">Mais Acessados</span>
-                    <tal:rep replace="structure string:</h2>"></tal:rep>
-                </div>
-            </div>
-    
+
             <div class="container-search"
                  tal:define="id_ajax string:results-${uuid};">
                 
@@ -114,7 +113,7 @@ i18n:domain="liberiun.govtile">
                                     
                                     <div class="left">
                                         <div>
-                                            <label>inicio</label>
+                                            <label>início</label>
                                         </div>
                                         <div>
                                             <input type="date" name="date-created-start">
@@ -159,7 +158,7 @@ i18n:domain="liberiun.govtile">
                                                replace="structure python:govtilesbatchview(batch, show_page_range=True, ajaxcontentid=id_ajax)"></tal:govtilesbatchview>
                                                
                         <div class="table-box">
-                            <table class="auto-table">
+                            <table class="auto-table tablesorter">
                                 <thead>
                                     <tr>
                                         <th tal:condition="is_file" width="62">Formato</th>

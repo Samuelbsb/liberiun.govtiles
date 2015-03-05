@@ -29,6 +29,7 @@ class CommentContentMacro(grok.View):
         self.p_membership = self.context.portal_membership
         form = self.request.form
         self.user_logged = self.p_membership.getAuthenticatedMember()
+        self.message = {}
         
         if self.user_logged.getUserName() ==  'Anonymous User':
             self.is_anonymous = True
@@ -63,6 +64,9 @@ class CommentContentMacro(grok.View):
                 'username': username,
                 'text': form.get('text', ''),}
         comment = CommentContent().newCommentContent(**data)
+
+        self.message = {'type': 'info',
+            'text': '%s seu comentário foi enviado para a moderação.' % (name)}
         
         return comment
     
@@ -223,20 +227,3 @@ class ManageCommentsView(CommentContentMacro):
             date_status = self.datetimeToString(reply['date_status'])
             str_status = status.name.capitalize()
             return '%s %s' % (str_status, date_status)
-            
-            
-        
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    

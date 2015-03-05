@@ -1,20 +1,12 @@
 # -*- coding: utf-8 -*-
-
-from AccessControl import Unauthorized
+from DateTime import DateTime
+from collective.cover import _
 from collective.cover.tiles.base import IPersistentCoverTile, PersistentCoverTile
 from zope import schema
-from plone.namedfile.field import NamedBlobImage as NamedImage
-from plone.tiles.interfaces import ITileDataManager
-from plone.uuid.interfaces import IUUID
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
-from plone.app.uuid.utils import uuidToCatalogBrain, uuidToObject
-from collective.cover.widgets.textlinessortable import TextLinesSortableFieldWidget
-from plone.autoform import directives as form
-from collective.cover import _
-
-from DateTime import DateTime
 
 from liberiun.govtiles.models.searchterms import SearchTerms
+
 
 FILE_CONTENT_TYPES = {
     'PDF' : ['application/pdf', 'application/x-pdf', 'image/pdf'],
@@ -24,7 +16,8 @@ FILE_CONTENT_TYPES = {
 }
 
 portal_types = SimpleVocabulary(
-    [SimpleTerm(value=u'File', title=_(u'Arquivos')),
+    [
+     SimpleTerm(value=u'File', title=_(u'Arquivos')),
      SimpleTerm(value=u'BoaPratica', title=_(u'Boas Práticas')),]
     )
 
@@ -54,17 +47,21 @@ class SearchContentsTile(PersistentCoverTile):
         brains = []
         request = self.request
         form = request.form
+        
         folder_context = self.context.aq_parent
+
+        #Pega o contexto do portal
+        portal_context = self.context.portal_url.getPortalObject()
         
         results = {}
         
         if portal_type_selected:
-            query = {'path': {'query': '/'.join(folder_context.getPhysicalPath()), 'depth': 99},
+            query = {'path': {'query': '/'.join(portal_context.getPhysicalPath()), 'depth': 99},
                      'portal_type': portal_type_selected,}
             
             if form.get('submitted', False):
                 indexes =  self.portal_catalog.indexes()
-                
+
                 for field, value in form.items():
                     if (field in indexes or 'date-' in field) and value:
                         
@@ -94,7 +91,6 @@ class SearchContentsTile(PersistentCoverTile):
                                 
                             continue
                         else:
-                            
                             if field == 'Subject':
                                 value= form[field]
                             else:

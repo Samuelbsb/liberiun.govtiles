@@ -3,10 +3,10 @@
     i18n_domain="liberiun.govtiles">
 
     <!-- Storm Configuration  -->
-    <!--store name="myvindula" uri="sqlite:myvindulaDB"/-->
+    <!--store name="govtiles_DB" uri="sqlite:govtiles_DB"/-->
     <store
-          name="myvindula"
-          uri="mysql://root:vindula@localhost/myvindulaDB" />  
+          name="govtiles_DB"
+          uri="mysql://root:vindula@localhost/liberiun_govtiles_DB" />  
       
       <!--mysql://usuario:senha@servidor/base_de_dados -->
 

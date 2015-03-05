@@ -20,9 +20,11 @@ $(document).ready(function () {
         
         if(ajax_id) {
             $container_ajax = $('[ajax-content="'+ajax_id+'"]');
+
             $.ajax({
                 url: url,
                 data: params,
+                async: false,
                 success: function(data){
                     if(ajax_filter) {
                     	try{
@@ -44,9 +46,11 @@ $(document).ready(function () {
                     }
                     
                     $container_ajax.html(data);
-                    if ($('table.tablesorter')) {
+                    if ($('table.tablesorter').length >= 1) {
                     	$('table.tablesorter').tablesorter();
                     }
+
+                    return true;
                 }
             });
         }

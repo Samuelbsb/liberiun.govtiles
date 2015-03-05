@@ -7,11 +7,17 @@
                           replies data/data|nothing;
                           is_anonymous view/is_anonymous|nothing;
                           id_ajax string:comment-content;
+                          message view/message|nothing;
                           member view/member|nothing"
                   metal:define-macro="commentmacro">
                        
     <div class="comment-container"
          tal:attributes="ajax-content id_ajax;">
+
+        <div tal:condition="message"
+             tal:attributes="class string:panel message-box ${message/type|nothing}">
+          <span tal:content="message/text|string:error"></span>
+        </div>
         
         <div class="container-form"
              tal:define="base_url view/url">

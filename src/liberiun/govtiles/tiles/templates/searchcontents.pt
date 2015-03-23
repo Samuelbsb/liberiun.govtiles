@@ -180,7 +180,7 @@ i18n:domain="liberiun.govtile">
                                                 </div>
                                             </td>
                                             <td><a tal:attributes="href item/url"><strong tal:content="item/title"></strong></a></td>
-                                            <td><span tal:content="item/generic_type"></span></td>
+                                            <td><span tal:content="item/generic_type|nothing"></span></td>
                                             <td><span tal:content="item/created"></span></td>
                                             <td tal:condition="is_file"><span tal:content="item/file_size"></span></td>
                                         </tr>

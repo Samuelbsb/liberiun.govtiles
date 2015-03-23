@@ -25,7 +25,7 @@ class CountAccessPage(grok.Viewlet):
             Chece se o conteúdo acessado é para ser computado o acesso. 
         """
         
-        if self.context.portal_type in ['File', 'BoaPratica']:
+        if self.context.portal_type in ['ArquivoBiblioteca', 'BoaPratica']:
             return True
         else:
             return False

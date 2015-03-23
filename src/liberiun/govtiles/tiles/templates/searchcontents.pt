@@ -17,7 +17,7 @@ i18n:domain="liberiun.govtile">
                   results data/list|nothing;
                   all_subjects data/all_subjects|nothing;
                   portal_type_selected data/portal_type_selected|nothing;
-                  is_file python: portal_type_selected == 'File' and True or False;
+                  is_file python: portal_type_selected == 'ArquivoBiblioteca' and True or False;
                   is_pratica not: is_file;
                   uuid view/id">
     

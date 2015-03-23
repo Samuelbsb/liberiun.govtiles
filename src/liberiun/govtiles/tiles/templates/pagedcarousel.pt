@@ -40,14 +40,14 @@
                                 </div>
                                 
                                 <div class="container-info">
-                                    <div class="ico-filetype-area" tal:condition="python:portal_type == 'File'">
+                                    <div class="ico-filetype-area" tal:condition="python:portal_type == 'ArquivoBiblioteca'">
                                         <span tal:content="item/content_type"></span>
                                     </div>
                                     
                                     <div class="info-item" tal:define="access item/access|nothing;">
                                         <span>Adicionado em: <span tal:replace="item/created|nothing"></span></span>
                                         <span>Acessos: <span tal:replace="python: (access) and access or '0'"></span></span>
-                                        <tal:cond condition="python:portal_type=='File'">
+                                        <tal:cond condition="python:portal_type=='ArquivoBiblioteca'">
                                             <span>Tamanho: <span tal:replace="item/file_size|nothing"></span></span>
                                         </tal:cond>
                                     </div>

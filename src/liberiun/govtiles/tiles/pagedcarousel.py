@@ -30,7 +30,7 @@ types_display = SimpleVocabulary(
     )
 
 content_types = SimpleVocabulary(
-    [SimpleTerm(value=u'File', title=_(u'Arquivos')),
+    [SimpleTerm(value=u'ArquivoBiblioteca', title=_(u'Arquivos Biblioteca')),
      SimpleTerm(value=u'BoaPratica', title=_(u'Boas Práticas')),]
     )
 
@@ -68,7 +68,7 @@ class PagedCarouselTile(PersistentCoverTile):
     def accepted_ct(self):
         """ Returna uma lista com os conteudos aceitos no tile
         """
-        return ['Folder' , 'File', 'BoaPratica']
+        return ['Folder' , 'ArquivoBiblioteca', 'BoaPratica']
     
     def populate_with_object(self, obj):
         super(PagedCarouselTile, self).populate_with_object(obj)  # check permission
@@ -154,12 +154,12 @@ class PagedCarouselTile(PersistentCoverTile):
             'access': AccessPage().getAmountAccessByUid(brain.UID),
         }
         
-        if brain.portal_type == 'File':
+        if brain.portal_type == 'ArquivoBiblioteca':
             object = brain.getObject()
             data_object['file_size'] = brain.getObjSize
             
             #Define e extensao do arquivo baseado no content_type do OBJ
-            file_meta_type = object.file.contentType
+            file_meta_type = object.getContentType()
             file_type = ''
             for type in FILE_CONTENT_TYPES:
                 if file_meta_type in FILE_CONTENT_TYPES[type]:

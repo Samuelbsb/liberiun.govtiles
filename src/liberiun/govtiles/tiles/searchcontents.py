@@ -17,7 +17,7 @@ FILE_CONTENT_TYPES = {
 
 portal_types = SimpleVocabulary(
     [
-     SimpleTerm(value=u'File', title=_(u'Arquivos')),
+     SimpleTerm(value=u'ArquivoBiblioteca', title=_(u'Arquivos Biblioteca')),
      SimpleTerm(value=u'BoaPratica', title=_(u'Boas Práticas')),]
     )
 

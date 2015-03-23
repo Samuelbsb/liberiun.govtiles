@@ -121,7 +121,7 @@ class SearchContentsTile(PersistentCoverTile):
             'created': brain.created.strftime('%d/%m/%Y'),
         }
         
-        if brain.portal_type == 'File':
+        if brain.portal_type == 'ArquivoBiblioteca':
             object = brain.getObject()
             data_object['file_size'] = brain.getObjSize
             

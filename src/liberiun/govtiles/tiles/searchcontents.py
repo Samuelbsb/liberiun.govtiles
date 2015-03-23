@@ -126,7 +126,7 @@ class SearchContentsTile(PersistentCoverTile):
             data_object['file_size'] = brain.getObjSize
             
             #Define e extensao do arquivo baseado no content_type do OBJ
-            file_meta_type = object.file.contentType
+            file_meta_type = object.getContentType()
             file_type = ''
             for type in FILE_CONTENT_TYPES:
                 if file_meta_type in FILE_CONTENT_TYPES[type]:

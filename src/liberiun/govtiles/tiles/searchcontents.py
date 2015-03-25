@@ -5,8 +5,6 @@ from collective.cover.tiles.base import IPersistentCoverTile, PersistentCoverTil
 from zope import schema
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
-from liberiun.govtiles.models.searchterms import SearchTerms
-
 
 FILE_CONTENT_TYPES = {
     'PDF' : ['application/pdf', 'application/x-pdf', 'image/pdf'],
@@ -59,6 +57,7 @@ class SearchContentsTile(PersistentCoverTile):
             query = {'path': {'query': '/'.join(portal_context.getPhysicalPath()), 'depth': 99},
                      'portal_type': portal_type_selected,}
             
+
             if form.get('submitted', False):
                 indexes =  self.portal_catalog.indexes()
 
@@ -66,9 +65,9 @@ class SearchContentsTile(PersistentCoverTile):
                     if (field in indexes or 'date-' in field) and value:
                         
                         if field == 'SearchableText':
-                            SearchTerms().manageSearchTerms(**{'value': value,
-                                                               'uid': folder_context.UID(),
-                                                               'type_object': portal_type_selected})
+                            # SearchTerms().manageSearchTerms(**{'value': value,
+                            #                                    'uid': folder_context.UID(),
+                            #                                    'type_object': portal_type_selected})
                             value = '*%s*' % form[field]
                         elif 'date-' in field:
                             date, index, field = field.split('-')
@@ -97,9 +96,14 @@ class SearchContentsTile(PersistentCoverTile):
                                 value = form[field].decode('utf-8')
                         
                         query[field] = value
+
+            #Feito isso pois quando o tipo de conteudo é ArquivoBiblieca não está buscando quando se usa o indice SearchableText
+            if portal_type_selected == u'ArquivoBiblioteca' and query.get('SearchableText'):
+                value = query.pop('SearchableText')
+                query['Title'] = value
+
             brains = self.portal_catalog(query)
-        
-        
+            
         results = {
             'portal_type_selected': portal_type_selected,
             'list': [self._brain_for_dict(brain) for brain in brains if brain],

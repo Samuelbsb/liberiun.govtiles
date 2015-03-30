@@ -5,12 +5,13 @@ xmlns:i18n="http://xml.zope.org/namespaces/i18n"
 i18n:domain="liberiun.govtile">
 
 <head>
-  <link rel="stylesheet" type="text/css"
+    <link rel="stylesheet" type="text/css"
       tal:attributes="href string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/css/tablesorter.css" />
-      
-  <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/jquery.metadata.js"></script>
-  <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/jquery.tablesorter.js"></script>
-  <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/tablesorter.js"></script>
+
+    <script type="text/javascript" tal:content="structure view/js"></script>
+    <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/jquery.metadata.js"></script>
+    <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" tal:attributes="src string:${context/portal_url}/++resource++liberiun.govtiles/tablesorter/js/tablesorter.js"></script>
 </head>
 
 <body tal:define="data view/get_dados;
@@ -61,8 +62,11 @@ i18n:domain="liberiun.govtile">
                                         <label>Tipo</label>
                                     </div>
                                     <div>
-                                        <select>
-                                            <option>Todos</option>
+                                        <select name="tipo_arquivo">
+                                            <option value="">Todos</option>
+                                            <tal:rep repeat="item data/all_types">
+                                                <option tal:content="item" tal:attributes="value item;"></option>
+                                            </tal:rep>
                                         </select>
                                     </div>
                                 </div>
@@ -87,21 +91,35 @@ i18n:domain="liberiun.govtile">
                                         <label>Formato</label>
                                     </div>
                                     <div>
-                                        <select>
-                                            <option>Todos</option>
+                                        <select name="file-format">
+                                            <option value="">Todos</option>
+                                            <tal:rep repeat="item data/all_formats">
+                                                <option tal:content="item" tal:attributes="value item;"></option>
+                                            </tal:rep>
                                         </select>
                                     </div>
                                 </div>
-                                <div>
+ 
+                                <div id="archetypes-fieldname-skos">
                                     <div>
                                         <label>Assunto</label>
                                     </div>
-                                    <div>
-                                        <select>
-                                            <option>Todos</option>
-                                        </select>
-                                    </div>
+
+                                    <select multiple="multiple"
+                                            class="blurrable"
+                                            id="skos"
+                                            name="skos:list"
+                                            size="10">
+
+                                      <option selected=""
+                                              tal:repeat="item data/vcge_list"
+                                              tal:attributes="value item/value;"
+                                              tal:content="item/title"
+                                              i18n:translate="" />
+                                    </select>
+                                    <script type="text/javascript" tal:content="structure view/js"></script>
                                 </div>
+
                             </div>
                             
                             <div class="cell width-5 position-10">

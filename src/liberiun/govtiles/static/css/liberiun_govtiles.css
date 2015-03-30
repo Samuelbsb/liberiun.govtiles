@@ -512,3 +512,5 @@ table.auto-table {
     background: #FFD7D7;
     border-color: #FF8E8E;
   }
+
+input[name="skos-input"] {width: 100%;}

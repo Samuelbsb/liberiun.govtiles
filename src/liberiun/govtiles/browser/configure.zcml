@@ -30,4 +30,18 @@
         allowed_attributes=""
         />
 
+  <browser:page
+      name="autocompletevcge-search"
+      for="*"
+      permission="zope.Public"
+      class=".autocompletevcge.AutocompleteSearchVcge"
+      />
+
+  <browser:page
+      name="autocompletevcge-populate"
+      for="*"
+      permission="zope.Public"
+      class=".autocompletevcge.AutocompletePopulateVcge"
+      />
+
 </configure>

@@ -1,26 +1,18 @@
 # -*- coding: utf-8 -*-
-
 from AccessControl import Unauthorized
+from collective.cover import _
 from collective.cover.tiles.base import IPersistentCoverTile, PersistentCoverTile
-from zope import schema
-from plone.namedfile.field import NamedBlobImage as NamedImage
+from plone.app.uuid.utils import uuidToCatalogBrain
 from plone.tiles.interfaces import ITileDataManager
 from plone.uuid.interfaces import IUUID
+from zope import schema
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
-from plone.app.uuid.utils import uuidToCatalogBrain, uuidToObject
-from collective.cover.widgets.textlinessortable import TextLinesSortableFieldWidget
-from plone.autoform import directives as form
-from collective.cover import _
 
+from liberiun.govcontent.content.arquivo_biblioteca import ArquivoBiblioteca
 from liberiun.govtiles.models.accesspage import AccessPage
 
 
-FILE_CONTENT_TYPES = {
-    'PDF' : ['application/pdf', 'application/x-pdf', 'image/pdf'],
-    'DOC' : ['application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
-    'PPT' : ['application/vnd.ms-powerpoint', 'application/powerpoint', 'application/mspowerpoint', 'application/x-mspowerpoint'],
-    'XLS' : ['application/vnd.ms-excel', 'application/msexcel', 'application/x-msexcel'],
-}
+FILE_CONTENT_TYPES = ArquivoBiblioteca.dict_file_content_types
 
 
 types_display = SimpleVocabulary(
@@ -155,19 +147,20 @@ class PagedCarouselTile(PersistentCoverTile):
         }
         
         if brain.portal_type == 'ArquivoBiblioteca':
-            object = brain.getObject()
             data_object['file_size'] = brain.getObjSize
             
             #Define e extensao do arquivo baseado no content_type do OBJ
             file_meta_type = object.getContentType()
+
             file_type = ''
             for type in FILE_CONTENT_TYPES:
                 if file_meta_type in FILE_CONTENT_TYPES[type]:
                     file_type = type
             if not file_type:
-                file_type = 'TXT'
+                file_type = 'OUTRO'
+
             data_object['content_type'] = file_type
-            data_object['generic_type'] = 'CARTILHA'
+            data_object['generic_type'] = object.getTipo_arquivo()
             
         elif brain.portal_type == 'BoaPratica':
             object = brain.getObject()

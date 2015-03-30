@@ -145,7 +145,8 @@ class PagedCarouselTile(PersistentCoverTile):
             'portal_type': brain.portal_type,
             'access': AccessPage().getAmountAccessByUid(brain.UID),
         }
-        
+        object = brain.getObject()
+
         if brain.portal_type == 'ArquivoBiblioteca':
             data_object['file_size'] = brain.getObjSize
             
@@ -163,7 +164,6 @@ class PagedCarouselTile(PersistentCoverTile):
             data_object['generic_type'] = object.getTipo_arquivo()
             
         elif brain.portal_type == 'BoaPratica':
-            object = brain.getObject()
             data_object['generic_type'] = object.getOrgaoresponsavel()
             
         

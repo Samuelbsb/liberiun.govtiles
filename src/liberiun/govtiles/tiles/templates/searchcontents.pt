@@ -162,10 +162,10 @@ i18n:domain="liberiun.govtile">
                     </form>
                 </div>
                 
-                <div class="container-results"
-                     tal:condition="results">
+                <div class="container-results" 
+                    tal:attributes="ajax-content id_ajax;">
                      
-                    <div class="results-search" tal:attributes="ajax-content id_ajax;"
+                    <div class="results-search" tal:condition="results"
                           tal:define="Batch python:modules['Products.CMFPlone'].Batch;
                                       b_size request/b_size|python:10;
                                       b_start python:0;
@@ -208,7 +208,16 @@ i18n:domain="liberiun.govtile">
                             </table>
                         </div>
                     </div>
+
+                    <div class="results-empty"
+                         tal:condition="not:results">
+                        
+                        <h3>Não foram encontrados resultados para sua pesquisa.</h3>
+
+                    </div>
                 </div>
+
+                
             </div>
         </div>
     </div>

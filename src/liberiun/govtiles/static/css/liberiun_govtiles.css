@@ -400,15 +400,15 @@ table.auto-table {
     }
     
     .container-search .container-filter .dates-box input.date {
-        width: 75px;
-    font-size: 12px;
-    text-align: left;
-    padding: 3px;
+      width: 75px;
+      font-size: 12px;
+      text-align: left;
+      padding: 3px;
     }
     
     .container-search .container-filter .top-filter .left,
     .container-search .container-filter .top-filter .right {
-        margin: 0;
+      margin: 0;
     }
     
     
@@ -419,12 +419,18 @@ table.auto-table {
     }
     
     .container-search .container-filter .top-filter input[type="text"] {
-        padding: 4px;
-    width: 205px;
-    font-size: 13px;
+      padding: 4px;
+      width: 205px;
+      font-size: 13px;
     }
     
     .container-search .navigation-govtiles { padding: 15px 10px 10px; }
+
+    .container-search .results-empty {
+      border: #AAA solid 1px;
+      border-top: none;
+      padding: 10px;
+    }
 
 
 
@@ -514,3 +520,4 @@ table.auto-table {
   }
 
 input[name="skos-input"] {width: 100%;}
+

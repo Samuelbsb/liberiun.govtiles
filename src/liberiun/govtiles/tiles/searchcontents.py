@@ -154,6 +154,7 @@ class SearchContentsTile(PersistentCoverTile):
         data_object =  {
             'title': brain.Title,
             'url': brain.getURL()+'/view',
+            'download' : brain.getURL()+'/download',
             'created': brain.created.strftime('%d/%m/%Y'),
         }
         object = brain.getObject()

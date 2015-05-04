@@ -194,7 +194,7 @@ i18n:domain="liberiun.govtile">
                                         <tr>
                                             <td tal:condition="is_file">
                                                 <div class="ico-filetype-area">
-                                                    <span tal:content="item/content_type"></span>
+                                                    <a tal:attributes="href item/download|nothing"><span tal:content="item/content_type"></span></a>
                                                 </div>
                                             </td>
                                             <td><a tal:attributes="href item/url"><strong tal:content="item/title"></strong></a></td>

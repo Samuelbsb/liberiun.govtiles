@@ -41,7 +41,7 @@
                                 
                                 <div class="container-info">
                                     <div class="ico-filetype-area" tal:condition="python:portal_type == 'ArquivoBiblioteca'">
-                                        <span tal:content="item/content_type"></span>
+                                        <a tal:attributes="href item/download|nothing"><span tal:content="item/content_type"></span></a>
                                     </div>
                                     
                                     <div class="info-item" tal:define="access item/access|nothing;">

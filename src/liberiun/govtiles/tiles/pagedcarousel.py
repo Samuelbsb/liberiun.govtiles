@@ -141,6 +141,7 @@ class PagedCarouselTile(PersistentCoverTile):
         data_object =  {
             'title': brain.Title,
             'url': brain.getURL()+'/view',
+            'download': brain.getURL()+'/download',
             'created': brain.created.strftime('%d/%m/%Y'),
             'portal_type': brain.portal_type,
             'access': AccessPage().getAmountAccessByUid(brain.UID),

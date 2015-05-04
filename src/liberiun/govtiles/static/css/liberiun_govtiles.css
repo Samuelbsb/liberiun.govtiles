@@ -352,6 +352,10 @@ table.auto-table {
   margin-right: 5px;
 }
 
+.ico-filetype-area span {
+  color: #FFF;
+}
+
 .tile-pagedcarousel .container-info .info-item {
   float: left;
   line-height: 1.1em;

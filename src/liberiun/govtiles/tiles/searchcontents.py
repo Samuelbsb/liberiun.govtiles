@@ -45,14 +45,14 @@ class SearchContentsTile(PersistentCoverTile):
         portal_type_selected = self.data.get('portal_type_selected', None)
         all_subjects = self.portal_catalog.uniqueValuesFor('Subject')
         all_types = self.portal_catalog.uniqueValuesFor('tipo_arquivo')
-
         all_formats = FILE_CONTENT_TYPES.keys()
+        all_formats.sort()
         all_formats.append('Outros')
 
         #Lista de VCGE
         terms = self.vocab_vcge()
         vcge_list = [{'value': term.token, 'title': term.title} for term in terms]
-
+        vcge_list.sort()
         brains = []
         request = self.request
         form = request.form
@@ -178,6 +178,7 @@ class SearchContentsTile(PersistentCoverTile):
                 file_type = 'OUTRO'
 
             data_object['content_type'] = file_type
+            data_object['download'] = object.absolute_url() + '/download'
             data_object['generic_type'] = object.getTipo_arquivo()
             
         elif brain.portal_type == 'BoaPratica':

@@ -37,7 +37,7 @@ i18n:domain="liberiun.govtile">
                             </div>
                             
                             <div class="right">
-                                <input type="text" value="" name="SearchableText" placeholder="Buscar"/>
+                                <input type="text" value="" name="SearchableText" placeholder="Busca"/>
                             </div>
                         </div>
                         

@@ -57,9 +57,10 @@ class SearchContentsTile(PersistentCoverTile):
         request = self.request
         form = request.form
         
+        folder_context = self.context.aq_parent
+
         #Pega o contexto do portal
         portal_context = self.context.portal_url.getPortalObject()
-        folder_context = self.context.aq_parent
         
         results = {}
         
@@ -76,8 +77,8 @@ class SearchContentsTile(PersistentCoverTile):
 
                         if field == 'SearchableText':
                             SearchTerms().manageSearchTerms(**{'value': value,
--                                                               'uid': folder_context.UID(),
--                                                               'type_object': portal_type_selected})
+                                'uid': folder_context.UID(),
+                                'type_object': portal_type_selected})
                             value = '*%s*' % form[field]
                             if portal_type_selected == u'ArquivoBiblioteca':
                                 query['Title'] = value
@@ -159,7 +160,6 @@ class SearchContentsTile(PersistentCoverTile):
         data_object =  {
             'title': brain.Title,
             'url': brain.getURL()+'/view',
-            'download' : brain.getURL()+'/download',
             'created': brain.created.strftime('%d/%m/%Y'),
         }
         object = brain.getObject()

@@ -10,6 +10,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 from liberiun.govcontent.content.arquivo_biblioteca import ArquivoBiblioteca
+from liberiun.govtiles.models.searchterms import SearchTerms
 
 
 FILE_CONTENT_TYPES = ArquivoBiblioteca.dict_file_content_types
@@ -58,6 +59,7 @@ class SearchContentsTile(PersistentCoverTile):
         
         #Pega o contexto do portal
         portal_context = self.context.portal_url.getPortalObject()
+        folder_context = self.context.aq_parent
         
         results = {}
         
@@ -73,6 +75,9 @@ class SearchContentsTile(PersistentCoverTile):
                     if (field in indexes or 'date-' in field) and value:
 
                         if field == 'SearchableText':
+                            SearchTerms().manageSearchTerms(**{'value': value,
+-                                                               'uid': folder_context.UID(),
+-                                                               'type_object': portal_type_selected})
                             value = '*%s*' % form[field]
                             if portal_type_selected == u'ArquivoBiblioteca':
                                 query['Title'] = value

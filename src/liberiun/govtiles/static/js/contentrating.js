@@ -2,7 +2,7 @@ $(document).ready(function () {
 	
 	$('div.rating').raty({ 
         starType: 'i',
-        hints: ['péssimo', 'ruim', 'regular', 'bom', 'ótimo']
+        hints: ['1 - Péssimo', '2 - Ruim', '3 - Mediano', '4 - Bom', '5 - Excelente'],
     });
 	
 	$('div.rating-geral').raty('set', {'readOnly': true});

@@ -179,12 +179,12 @@ i18n:domain="liberiun.govtile">
                             <table class="auto-table tablesorter">
                                 <thead>
                                     <tr>
-                                        <th tal:condition="is_file" width="62">Formato</th>
+                                        <th tal:condition="is_file" width="100">Formato</th>
                                         <th>Título</th>
                                         <th tal:condition="is_file" width="100">Tipo</th>
                                         <th tal:condition="is_pratica" width="200">Órgão Reponsável</th>
-                                        <th width="85">Data</th>
-                                        <th tal:condition="is_file" width="70">Tamanho</th>
+                                        <th width="100">Data</th>
+                                        <th tal:condition="is_file" width="100">Tamanho</th>
                                     </tr>
                                 </thead>
                                 

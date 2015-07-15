@@ -27,6 +27,8 @@ class RateContentView(BrowserView):
         if username == 'Anonymous User':
             self.my_rate = 0
             self.is_anonymous = True
+            return "<div class='rate-line' style='text-align:right'><span >Avaliação geral: Para avaliar está boa prática, \
+                        é necessário efetuar o login no portal.</span></div>"
         else:
             my_rate = RateContent().getRateContentByUsername(uid, username)
             

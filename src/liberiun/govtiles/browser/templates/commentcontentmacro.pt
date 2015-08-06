@@ -23,6 +23,7 @@
              tal:define="base_url view/url">
              
             <form action="" class="form-new-comment use-ajax">
+                <input type="hidden" name="submitted" value=1 />
                 <div class="field">
                     <div><label>Nome</label></div>
                     <div>

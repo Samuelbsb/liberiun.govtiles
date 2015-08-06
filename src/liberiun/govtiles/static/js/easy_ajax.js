@@ -2,6 +2,7 @@ $(document).ready(function () {
 	
     $(document).on('click', 'a[ajax-id], input[ajax-id]', function(ev){
         ev.preventDefault();
+        ev.stopImmediatePropagation();
         
         var $this = $(this),
             url = $this.attr('ajax-url'),
@@ -20,7 +21,6 @@ $(document).ready(function () {
         
         if(ajax_id) {
             $container_ajax = $('[ajax-content="'+ajax_id+'"]');
-
             $.ajax({
                 url: url,
                 data: params,
@@ -50,9 +50,9 @@ $(document).ready(function () {
                     	$('table.tablesorter').tablesorter();
                     }
 
-                    return true;
                 }
             });
         }
+    return false;
     });
 });

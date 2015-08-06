@@ -28,6 +28,7 @@ class CommentContentMacro(grok.View):
     def load_view(self):
         self.p_membership = self.context.portal_membership
         form = self.request.form
+        submitted = form.get('submitted', None)
         self.user_logged = self.p_membership.getAuthenticatedMember()
         self.message = {}
         
@@ -37,9 +38,8 @@ class CommentContentMacro(grok.View):
             self.is_anonymous = False
             self.member = self.user_logged
         
-        if form.get('save'):
+        if submitted:
             self.insertNewComment(form)
-            
             
     def insertNewComment(self, form):
         """

@@ -525,3 +525,7 @@ table.auto-table {
 
 input[name="skos-input"] {width: 100%;}
 
+/* Ajuste largura do calendario */
+#calroot {
+	width: 205px !important;
+}
